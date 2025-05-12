@@ -16,17 +16,17 @@ const SuggestActivity = () => {
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="section-title">Saknar du något?</h2>
-            <p className="mb-6">Föreslå en aktivitet du skulle vilja se hos oss</p>
+            <h2 className="section-title">Föreslå en aktivitet</h2>
+            <p className="mb-6">Tipsa oss om en aktivitet du skulle vilja se</p>
             
             <form className="space-y-4">
               <div>
                 <label htmlFor="activity" className="block mb-1 font-medium">Aktivitet</label>
-                <Input type="text" id="activity" placeholder="Vad skulle du vilja göra?" className="w-full" />
+                <Input type="text" id="activity" placeholder="Aktivitetens namn" className="w-full" />
               </div>
               <div>
                 <label htmlFor="description" className="block mb-1 font-medium">Beskrivning</label>
-                <Textarea id="description" placeholder="Berätta mer om din idé..." className="w-full" rows={4} />
+                <Textarea id="description" placeholder="Beskriv aktiviteten..." className="w-full" rows={4} />
               </div>
               <Button className="bg-lovely-red hover:bg-opacity-90 w-full md:w-auto">Skicka förslag</Button>
             </form>

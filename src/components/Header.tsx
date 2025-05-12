@@ -9,7 +9,7 @@ const Header = () => {
         <div className="flex items-center">
           <div className="text-lovely-red font-serif">
             <h1 className="text-3xl font-bold">Lovely</h1>
-            <p className="text-sm">Träffa nya vänner</p>
+            <p className="text-sm">Meningsfulla möten</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
