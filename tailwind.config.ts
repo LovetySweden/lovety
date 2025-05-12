@@ -64,10 +64,12 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				lovely: {
-					red: '#d63f2c',
-					cream: '#f8f3e9',
-					beige: '#d6cdb5',
-					gray: '#a4a59e',
+					red: '#C0392B',     // Rosewood Red - Primary
+					beige: '#F5EFE6',   // Sandstone Beige
+					sage: '#8E9B90',    // Olive Sage
+					coral: '#F08080',   // Soft Coral
+					slate: '#6C7A89',   // Slate Blue
+					yellow: '#F7DC6F',  // Sunlight Yellow - Accent
 				}
 			},
 			borderRadius: {
@@ -98,7 +100,8 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			fontFamily: {
-				'serif': ['Georgia', 'Cambria', 'serif'],
+				'serif': ['The Season', 'Georgia', 'Cambria', 'serif'],
+				'sans': ['Lato', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			}
 		}
 	},

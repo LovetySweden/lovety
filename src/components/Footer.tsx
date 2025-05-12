@@ -3,7 +3,7 @@ import { Facebook, Instagram } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-lovely-cream text-gray-800 pt-10 pb-4 px-4">
+    <footer className="bg-lovely-beige text-lovely-slate border-t border-lovely-sage/20 pt-10 pb-4 px-4">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between mb-8">
           <div className="mb-6 md:mb-0">
@@ -20,7 +20,7 @@ const Footer = () => {
           </div>
           <div className="flex flex-col md:flex-row gap-8 md:gap-16">
             <div className="mb-6 md:mb-0">
-              <h4 className="font-medium mb-3">Aktiviteter</h4>
+              <h4 className="font-serif text-lovely-red font-medium mb-3">Aktiviteter</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:underline">Kommande aktiviteter</a></li>
                 <li><a href="#" className="hover:underline">Föreslå en aktivitet</a></li>
@@ -28,7 +28,7 @@ const Footer = () => {
               </ul>
             </div>
             <div className="mb-6 md:mb-0">
-              <h4 className="font-medium mb-3">Om oss</h4>
+              <h4 className="font-serif text-lovely-red font-medium mb-3">Om oss</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:underline">Vår historia</a></li>
                 <li><a href="#" className="hover:underline">Teamet</a></li>
@@ -36,7 +36,7 @@ const Footer = () => {
               </ul>
             </div>
             <div>
-              <h4 className="font-medium mb-3">Juridisk information</h4>
+              <h4 className="font-serif text-lovely-red font-medium mb-3">Juridisk information</h4>
               <ul className="space-y-2">
                 <li><a href="#" className="hover:underline">Användarvillkor</a></li>
                 <li><a href="#" className="hover:underline">Integritetspolicy</a></li>
@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="border-t border-lovely-beige pt-4 text-sm text-gray-600">
+        <div className="border-t border-lovely-sage/20 pt-4 text-sm text-lovely-slate">
           <p>© {new Date().getFullYear()} Lovely. Alla rättigheter förbehållna.</p>
         </div>
       </div>
