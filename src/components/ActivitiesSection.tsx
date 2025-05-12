@@ -7,7 +7,7 @@ const activities = [
     image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07",
     title: "Filosofikväll på café",
     date: "Torsdag, 18 maj",
-    time: "18:30 - 21:30",
+    time: "18:30 - 21:00",
     location: "Stockholm"
   },
   {
@@ -23,7 +23,7 @@ const activities = [
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
     title: "Matlagningskurs",
     date: "Fredag, 19 maj",
-    time: "18:00 - 22:00",
+    time: "18:00 - 21:30",
     location: "Stockholm",
     isFull: true
   },
@@ -46,11 +46,10 @@ const activities = [
   {
     id: 6,
     image: "https://images.unsplash.com/photo-1551038247-3d9af20df552",
-    title: "Tjejkväll med Spa",
-    date: "Lördag, 27 maj",
+    title: "Afterwork med brädspel",
+    date: "Fredag, 26 maj",
     time: "17:00 - 21:00",
-    location: "Stockholm",
-    isFull: true
+    location: "Stockholm"
   },
   {
     id: 7,
@@ -74,8 +73,8 @@ const ActivitiesSection = () => {
   return (
     <div className="bg-lovely-cream py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <h2 className="section-title">Aktiviteter</h2>
-        <p className="mb-6">Delta i någon av våra populära aktiviteter och träffa nya vänner</p>
+        <h2 className="section-title">Populära aktiviteter</h2>
+        <p className="mb-6">Hitta nya vänner genom något du tycker är kul</p>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {activities.map(activity => (

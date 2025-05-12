@@ -3,17 +3,17 @@ const AboutSection = () => {
   return (
     <div className="bg-white py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <h2 className="section-title">Vi är Lovely</h2>
+        <h2 className="section-title">Om Lovely</h2>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
             <p className="mb-4">
-              Lovely är aktiviteter för alla som vill träffa nya vänner och potentiella partners genom roliga och meningsfulla aktiviteter.
+              Lovely skapades för att göra det enklare att träffa nya vänner i vuxen ålder. Alla som någon gång flyttat till en ny stad eller gått igenom en större livsförändring vet hur svårt det kan vara att bygga nya relationer.
             </p>
             <p className="mb-4">
-              Vi skapar tillfällen där man kan ha kul tillsammans genom att göra något man tycker om, inte bara träffas för träffandets skull. Att göra något tillsammans skapar samtalsämnen och ger naturliga möten.
+              Genom att mötas kring aktiviteter och gemensamma intressen blir det naturligt att lära känna nya människor. Här finns något för alla - från matlagningskurser och filosofikvällar till vandring och dans.
             </p>
             <p className="mb-4">
-              Med våra olika aktiviteter finns det något för alla - från matlagningskurser och filosofikvällar till vandring och dans. Och vem vet, kanske träffar du kärleken!
+              Vår vision är att skapa en vänligare värld där människor vågar öppna upp och skapa äkta kontakt med varandra.
             </p>
           </div>
           <div className="md:w-1/2 grid grid-cols-2 gap-4">

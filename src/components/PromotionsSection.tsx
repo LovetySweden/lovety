@@ -3,8 +3,8 @@ const promotions = [
   {
     id: 1,
     image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901",
-    title: "10% rabatt för nya medlemmar",
-    description: "Registrera dig idag och få 10% rabatt på din första aktivitet"
+    title: "Första aktiviteten gratis",
+    description: "Registrera dig idag och få din första aktivitet utan kostnad"
   },
   {
     id: 2,
