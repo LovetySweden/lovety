@@ -86,32 +86,35 @@ const FeatureSection = () => {
             
             return (
               <li key={feature.id} className="flex items-center group">
-                <HoverCard>
-                  <HoverCardTrigger asChild>
-                    <div>
-                      <Button 
-                        onClick={() => handleVote(feature.id)}
-                        variant="ghost" 
-                        className={`h-auto p-1 mr-3 ${hasVoted ? 'text-lovely-red' : 'text-gray-400'} hover:text-lovely-red hover:bg-lovely-beige/50`}
-                        disabled={hasVoted}
-                      >
-                        <ThumbsUp className="h-6 w-6 flex-shrink-0" />
-                      </Button>
-                    </div>
-                  </HoverCardTrigger>
-                  {hasVoted && (
-                    <HoverCardContent className="text-sm">
-                      Du har redan röstat på denna aktivitet
-                    </HoverCardContent>
-                  )}
-                </HoverCard>
+                <div className="flex items-center mr-3">
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <div>
+                        <Button 
+                          onClick={() => handleVote(feature.id)}
+                          variant="ghost" 
+                          className={`h-auto p-1 ${hasVoted ? 'text-lovely-red' : 'text-gray-400'} hover:text-lovely-red hover:bg-lovely-beige/50`}
+                          disabled={hasVoted}
+                        >
+                          <ThumbsUp className="h-6 w-6 flex-shrink-0" />
+                        </Button>
+                      </div>
+                    </HoverCardTrigger>
+                    {hasVoted && (
+                      <HoverCardContent className="text-sm">
+                        Du har redan röstat på denna aktivitet
+                      </HoverCardContent>
+                    )}
+                  </HoverCard>
+                  
+                  <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm">
+                    {feature.votes}
+                  </span>
+                </div>
                 
                 <div className="flex-1">
                   <span>{feature.text}</span>
                 </div>
-                <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm ml-2">
-                  {feature.votes} röster
-                </span>
               </li>
             );
           })}
