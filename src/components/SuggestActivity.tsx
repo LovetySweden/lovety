@@ -28,6 +28,10 @@ const SuggestActivity = () => {
                 <label htmlFor="description" className="block mb-1 font-medium">Beskrivning</label>
                 <Textarea id="description" placeholder="Beskriv aktiviteten..." className="w-full" rows={4} />
               </div>
+              <div>
+                <label htmlFor="age" className="block mb-1 font-medium">Ålder</label>
+                <Input type="number" id="age" placeholder="Din ålder" className="w-full" min="18" max="100" />
+              </div>
               <Button className="bg-lovely-red hover:bg-opacity-90 w-full md:w-auto">Skicka förslag</Button>
             </form>
           </div>

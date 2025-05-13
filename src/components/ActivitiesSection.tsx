@@ -81,6 +81,7 @@ const ActivitiesSection = () => {
           {activities.map(activity => (
             <ActivityCard 
               key={activity.id}
+              id={activity.id}
               image={activity.image}
               title={activity.title}
               date={activity.date}

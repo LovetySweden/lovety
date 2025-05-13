@@ -6,7 +6,7 @@ const NewsletterSection = () => {
   return (
     <div className="bg-lovely-beige py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <h2 className="section-title">Bli medlem i Lovely</h2>
+        <h2 className="section-title">Sign up for our newsletter</h2>
         <p className="mb-6">Få nya aktiviteter direkt i din inkorg</p>
         
         <form className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl">
