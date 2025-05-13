@@ -1,5 +1,5 @@
 
-import { CheckCircle, Plus } from "lucide-react";
+import { ThumbsUp } from "lucide-react";
 import { useState } from "react";
 import { Button } from "./ui/button";
 
@@ -33,13 +33,19 @@ const initialFeatures = [
 
 const FeatureSection = () => {
   const [features, setFeatures] = useState(initialFeatures);
+  const [votedFeatures, setVotedFeatures] = useState<number[]>([]);
 
   const handleVote = (id: number) => {
+    // Check if user already voted for this feature
+    if (votedFeatures.includes(id)) return;
+    
     setFeatures(features.map(feature => 
       feature.id === id 
       ? { ...feature, votes: feature.votes + 1 } 
       : feature
     ));
+    
+    setVotedFeatures([...votedFeatures, id]);
   };
 
   return (
@@ -50,18 +56,19 @@ const FeatureSection = () => {
         
         <ul className="space-y-4 max-w-2xl">
           {features.map((feature) => (
-            <li key={feature.id} className="flex items-start group">
+            <li key={feature.id} className="flex items-center group">
               <Button 
                 onClick={() => handleVote(feature.id)}
                 variant="ghost" 
-                className="h-auto p-1 mr-2 text-lovely-red hover:text-lovely-red hover:bg-lovely-beige/50"
+                className={`h-auto p-1 mr-3 ${votedFeatures.includes(feature.id) ? 'text-lovely-red' : 'text-gray-400'} hover:text-lovely-red hover:bg-lovely-beige/50`}
+                disabled={votedFeatures.includes(feature.id)}
               >
-                <CheckCircle className="h-6 w-6 flex-shrink-0" />
+                <ThumbsUp className="h-6 w-6 flex-shrink-0" />
               </Button>
               <div className="flex-1">
                 <span>{feature.text}</span>
               </div>
-              <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm">
+              <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm ml-2">
                 {feature.votes} röster
               </span>
             </li>

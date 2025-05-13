@@ -1,41 +1,50 @@
-
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
+import { useState } from "react";
 
 const SuggestActivity = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [phone, setPhone] = useState("");
+  const [activity, setActivity] = useState("");
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    console.log("Form submitted", { name, email, age, phone, activity });
+    // You can add your submission logic here, such as sending the data to an API
+  };
+
   return (
-    <div className="bg-lovely-cream py-12 px-4 md:px-8">
+    <div className="bg-lovely-beige py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row gap-8 items-center">
-          <div className="md:w-1/2">
-            <img 
-              src="https://images.unsplash.com/photo-1517022812141-23620dba5c23" 
-              alt="People enjoying an activity" 
-              className="rounded-lg w-full h-auto object-cover"
-            />
+        <h2 className="section-title">Föreslå en aktivitet</h2>
+        <p className="mb-6">Har du en idé för en aktivitet? Fyll i formuläret nedan så hör vi av oss!</p>
+        
+        <form className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
+          <div>
+            <label htmlFor="name" className="block mb-1 font-medium">Namn</label>
+            <input type="text" id="name" className="w-full border border-gray-300 px-4 py-2 rounded" />
           </div>
-          <div className="md:w-1/2">
-            <h2 className="section-title">Föreslå en aktivitet</h2>
-            <p className="mb-6">Tipsa oss om en aktivitet du skulle vilja se</p>
-            
-            <form className="space-y-4">
-              <div>
-                <label htmlFor="activity" className="block mb-1 font-medium">Aktivitet</label>
-                <Input type="text" id="activity" placeholder="Aktivitetens namn" className="w-full" />
-              </div>
-              <div>
-                <label htmlFor="description" className="block mb-1 font-medium">Beskrivning</label>
-                <Textarea id="description" placeholder="Beskriv aktiviteten..." className="w-full" rows={4} />
-              </div>
-              <div>
-                <label htmlFor="age" className="block mb-1 font-medium">Ålder</label>
-                <Input type="number" id="age" placeholder="Din ålder" className="w-full" min="18" max="100" />
-              </div>
-              <Button className="bg-lovely-red hover:bg-opacity-90 w-full md:w-auto">Skicka förslag</Button>
-            </form>
+          <div>
+            <label htmlFor="email" className="block mb-1 font-medium">Email</label>
+            <input type="email" id="email" className="w-full border border-gray-300 px-4 py-2 rounded" />
           </div>
-        </div>
+          <div>
+            <label htmlFor="age" className="block mb-1 font-medium">Ålder</label>
+            <input type="number" id="age" min="18" max="120" className="w-full border border-gray-300 px-4 py-2 rounded" />
+          </div>
+          <div>
+            <label htmlFor="phone" className="block mb-1 font-medium">Telefon</label>
+            <input type="tel" id="phone" className="w-full border border-gray-300 px-4 py-2 rounded" />
+          </div>
+          <div className="md:col-span-2">
+            <label htmlFor="activity" className="block mb-1 font-medium">Beskriv din idé</label>
+            <textarea id="activity" rows={4} className="w-full border border-gray-300 px-4 py-2 rounded"></textarea>
+          </div>
+          <div className="md:col-span-2 flex justify-end">
+            <button className="bg-lovely-red text-white px-8 py-3 rounded hover:bg-opacity-90 transition-all">Skicka</button>
+          </div>
+        </form>
       </div>
     </div>
   );

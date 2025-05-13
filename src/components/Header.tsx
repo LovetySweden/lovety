@@ -1,6 +1,7 @@
 
-import { Facebook } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
+import { Link as ScrollLink } from "react-scroll";
 
 const Header = () => {
   return (
@@ -14,15 +15,18 @@ const Header = () => {
           />
           <div className="text-white font-serif">
             <h1 className="text-3xl font-bold">Lovely</h1>
-            <p className="text-sm">Meningsfulla möten</p>
           </div>
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="link" size="sm" className="text-white">Logga in</Button>
-          <Button className="bg-lovely-red hover:bg-opacity-90">Bli medlem</Button>
-          <div className="ml-2 flex items-center">
+          <ScrollLink to="newsletter" smooth={true} duration={500}>
+            <Button className="bg-lovely-red hover:bg-opacity-90">Get our newsletter</Button>
+          </ScrollLink>
+          <div className="ml-2 flex items-center space-x-2">
             <a href="#" aria-label="Facebook" className="text-white">
               <Facebook size={20} />
+            </a>
+            <a href="#" aria-label="Instagram" className="text-white">
+              <Instagram size={20} />
             </a>
           </div>
         </div>
