@@ -1,7 +1,9 @@
 
 import { ThumbsUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "./ui/button";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "./ui/hover-card";
+import { useToast } from "./ui/use-toast";
 
 const initialFeatures = [
   {
@@ -31,21 +33,45 @@ const initialFeatures = [
   },
 ];
 
+// Local storage key for votes
+const VOTED_FEATURES_KEY = "lovely_voted_features";
+
 const FeatureSection = () => {
   const [features, setFeatures] = useState(initialFeatures);
   const [votedFeatures, setVotedFeatures] = useState<number[]>([]);
+  const { toast } = useToast();
+
+  // Load previously voted features from local storage
+  useEffect(() => {
+    const savedVotes = localStorage.getItem(VOTED_FEATURES_KEY);
+    if (savedVotes) {
+      setVotedFeatures(JSON.parse(savedVotes));
+    }
+  }, []);
 
   const handleVote = (id: number) => {
     // Check if user already voted for this feature
-    if (votedFeatures.includes(id)) return;
+    if (votedFeatures.includes(id)) {
+      return;
+    }
     
+    // Update votes
     setFeatures(features.map(feature => 
       feature.id === id 
       ? { ...feature, votes: feature.votes + 1 } 
       : feature
     ));
     
-    setVotedFeatures([...votedFeatures, id]);
+    // Save vote in state and local storage
+    const updatedVotes = [...votedFeatures, id];
+    setVotedFeatures(updatedVotes);
+    localStorage.setItem(VOTED_FEATURES_KEY, JSON.stringify(updatedVotes));
+    
+    // Show success toast
+    toast({
+      title: "Tack för din röst!",
+      description: "Din röst har registrerats.",
+    });
   };
 
   return (
@@ -55,24 +81,40 @@ const FeatureSection = () => {
         <p className="mb-6">Har du preferenser på aktiviteter? Rösta på nedanstående eller föreslå egna!</p>
         
         <ul className="space-y-4 max-w-2xl">
-          {features.map((feature) => (
-            <li key={feature.id} className="flex items-center group">
-              <Button 
-                onClick={() => handleVote(feature.id)}
-                variant="ghost" 
-                className={`h-auto p-1 mr-3 ${votedFeatures.includes(feature.id) ? 'text-lovely-red' : 'text-gray-400'} hover:text-lovely-red hover:bg-lovely-beige/50`}
-                disabled={votedFeatures.includes(feature.id)}
-              >
-                <ThumbsUp className="h-6 w-6 flex-shrink-0" />
-              </Button>
-              <div className="flex-1">
-                <span>{feature.text}</span>
-              </div>
-              <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm ml-2">
-                {feature.votes} röster
-              </span>
-            </li>
-          ))}
+          {features.map((feature) => {
+            const hasVoted = votedFeatures.includes(feature.id);
+            
+            return (
+              <li key={feature.id} className="flex items-center group">
+                <HoverCard>
+                  <HoverCardTrigger asChild>
+                    <div>
+                      <Button 
+                        onClick={() => handleVote(feature.id)}
+                        variant="ghost" 
+                        className={`h-auto p-1 mr-3 ${hasVoted ? 'text-lovely-red' : 'text-gray-400'} hover:text-lovely-red hover:bg-lovely-beige/50`}
+                        disabled={hasVoted}
+                      >
+                        <ThumbsUp className="h-6 w-6 flex-shrink-0" />
+                      </Button>
+                    </div>
+                  </HoverCardTrigger>
+                  {hasVoted && (
+                    <HoverCardContent className="text-sm">
+                      Du har redan röstat på denna aktivitet
+                    </HoverCardContent>
+                  )}
+                </HoverCard>
+                
+                <div className="flex-1">
+                  <span>{feature.text}</span>
+                </div>
+                <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm ml-2">
+                  {feature.votes} röster
+                </span>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </div>

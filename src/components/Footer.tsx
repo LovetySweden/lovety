@@ -10,10 +10,10 @@ const Footer = () => {
             <h3 className="text-xl font-serif font-bold text-lovely-red">Lovely</h3>
             <p className="mt-2">Meningsfulla möten</p>
             <div className="mt-4 flex space-x-4">
-              <a href="#" aria-label="Instagram" className="text-lovely-red hover:text-opacity-80">
+              <a href="https://www.instagram.com/lovetysweden/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-lovely-red hover:text-opacity-80">
                 <Instagram size={24} />
               </a>
-              <a href="#" aria-label="Facebook" className="text-lovely-red hover:text-opacity-80">
+              <a href="https://www.facebook.com/profile.php?id=61571042866497" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-lovely-red hover:text-opacity-80">
                 <Facebook size={24} />
               </a>
             </div>

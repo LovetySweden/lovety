@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import ActivityCard from "./ActivityCard";
 import { Button } from "./ui/button";
-import { Activity } from "./ActivityManager";
+import { Activity } from "@/types/activities";
+import { useToast } from "./ui/use-toast";
 
-// Initial mock data
+// Initial mock data (will be replaced by Google Sheets data when available)
 const initialActivities = [
   {
     id: 1,
@@ -13,7 +14,8 @@ const initialActivities = [
     time: "18:30 - 21:30",
     location: "Stockholm",
     description: "En avslappnad kväll med filosofiska diskussioner på ett mysigt café i centrala Stockholm.",
-    price: "150 kr"
+    price: "150 kr",
+    isOnSale: true
   },
   {
     id: 2,
@@ -23,7 +25,8 @@ const initialActivities = [
     time: "10:00 - 14:00",
     location: "Tyresta",
     description: "Upplev naturen i Tyresta nationalpark med en guidad vandring.",
-    price: "200 kr"
+    price: "200 kr",
+    isOnSale: true
   },
   {
     id: 3,
@@ -34,7 +37,8 @@ const initialActivities = [
     location: "Stockholm",
     description: "Lär dig laga italiensk mat från grunden under ledning av en professionell kock.",
     price: "450 kr",
-    isFull: true
+    isFull: true,
+    isOnSale: true
   },
   {
     id: 4,
@@ -44,7 +48,8 @@ const initialActivities = [
     time: "18:30 - 21:00",
     location: "Stockholm",
     description: "Introduktion till vinets värld med fokus på röda viner från olika regioner.",
-    price: "350 kr"
+    price: "350 kr",
+    isOnSale: false
   },
   {
     id: 5,
@@ -93,23 +98,27 @@ const ActivitiesSection = () => {
   const [activities, setActivities] = useState<Activity[]>(initialActivities);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { toast } = useToast();
 
   // Function to load activities from Google Sheet
   const fetchActivities = async () => {
     // URL for your Google Apps Script Web App
-    const sheetUrl = "YOUR_GOOGLE_SHEET_READ_URL";
+    const sheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL || "";
+    
+    if (!sheetUrl) {
+      console.log("Google Sheet URL not configured. Using initial activities data.");
+      return;
+    }
 
     setIsLoading(true);
     setError(null);
 
     try {
-      // Try to fetch from Google Sheet
+      // Fetch from Google Sheet
       const response = await fetch(sheetUrl);
       
-      // If fetch fails or returns no data, use the initial activities
       if (!response.ok) {
-        console.log("Using initial activities data");
-        return;
+        throw new Error(`Failed to fetch activities: ${response.status}`);
       }
       
       const data = await response.json();
@@ -117,22 +126,30 @@ const ActivitiesSection = () => {
       // Only update activities if we got valid data
       if (Array.isArray(data) && data.length > 0) {
         setActivities(data);
+        toast({
+          title: "Aktiviteter uppdaterade",
+          description: `${data.length} aktiviteter laddades framgångsrikt.`,
+        });
+      } else {
+        throw new Error("Invalid data format received");
       }
     } catch (err) {
       console.error("Error fetching activities:", err);
       setError("Failed to load activities");
-      // Keep using the initial activities on error
+      toast({
+        title: "Fel vid laddning",
+        description: "Kunde inte ladda aktiviteter. Försök igen senare.",
+        variant: "destructive",
+      });
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Uncomment this to fetch from Google Sheet when component mounts
-  /*
+  // Fetch activities when component mounts
   useEffect(() => {
     fetchActivities();
   }, []);
-  */
 
   return (
     <div className="bg-lovely-cream py-12 px-4 md:px-8">
@@ -163,6 +180,7 @@ const ActivitiesSection = () => {
                 time={activity.time}
                 location={activity.location}
                 isFull={activity.isFull}
+                isOnSale={activity.isOnSale !== false}
               />
             ))}
           </div>

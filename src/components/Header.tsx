@@ -22,10 +22,10 @@ const Header = () => {
             <Button className="bg-lovely-red hover:bg-opacity-90">Get our newsletter</Button>
           </ScrollLink>
           <div className="ml-2 flex items-center space-x-2">
-            <a href="#" aria-label="Facebook" className="text-white">
+            <a href="https://www.facebook.com/profile.php?id=61571042866497" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-white">
               <Facebook size={20} />
             </a>
-            <a href="#" aria-label="Instagram" className="text-white">
+            <a href="https://www.instagram.com/lovetysweden/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white">
               <Instagram size={20} />
             </a>
           </div>

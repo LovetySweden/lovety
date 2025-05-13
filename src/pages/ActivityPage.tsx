@@ -1,8 +1,10 @@
-
 import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useToast } from "@/components/ui/use-toast";
 
 // Mock data - in a real application this would come from an API
 const activities = [
@@ -15,6 +17,7 @@ const activities = [
     location: "Stockholm",
     description: "En avslappnad kväll med filosofiska diskussioner på ett mysigt café i centrala Stockholm. Alla är välkomna oavsett tidigare erfarenhet av filosofi.",
     price: "150 kr",
+    isOnSale: true,
     isFull: false
   },
   {
@@ -26,6 +29,7 @@ const activities = [
     location: "Tyresta",
     description: "Upplev naturen i Tyresta nationalpark med en guidad vandring. Vi samlas vid entrén och går en vacker led tillsammans.",
     price: "200 kr",
+    isOnSale: true,
     isFull: false
   },
   {
@@ -37,6 +41,7 @@ const activities = [
     location: "Stockholm",
     description: "Lär dig laga italiensk mat från grunden under ledning av en professionell kock.",
     price: "450 kr",
+    isOnSale: true,
     isFull: true
   },
   {
@@ -48,6 +53,7 @@ const activities = [
     location: "Stockholm",
     description: "Introduktion till vinets värld med fokus på röda viner från olika regioner.",
     price: "350 kr",
+    isOnSale: false,
     isFull: false
   },
   {
@@ -99,8 +105,13 @@ const activities = [
 const ActivityPage = () => {
   const { id } = useParams<{ id: string }>();
   const activityId = parseInt(id || "0");
+  const { toast } = useToast();
   
   const activity = activities.find(a => a.id === activityId);
+  
+  const [showInterestForm, setShowInterestForm] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   
   if (!activity) {
     return (
@@ -118,6 +129,38 @@ const ActivityPage = () => {
       </div>
     );
   }
+
+  const handleBuyTicket = () => {
+    // In a real application, this would redirect to a payment page
+    toast({
+      title: "Bokning påbörjad",
+      description: "Du kommer nu att omdirigeras till betalningssidan.",
+    });
+  };
+
+  const handleRegisterInterest = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // In a real application, you would send this data to your backend
+    const interestData = {
+      activityId,
+      name,
+      email
+    };
+    
+    console.log("Interest registered:", interestData);
+    
+    // Show success message
+    toast({
+      title: "Intresse registrerat",
+      description: "Vi meddelar dig när aktiviteten släpps för bokning.",
+    });
+    
+    // Reset form
+    setName("");
+    setEmail("");
+    setShowInterestForm(false);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -160,12 +203,68 @@ const ActivityPage = () => {
                 <p className="text-lovely-slate">{activity.description}</p>
               </div>
               
-              <Button 
-                className={`${activity.isFull ? 'bg-lovely-sage' : 'bg-lovely-red'} text-white px-8 py-3 text-lg`}
-                disabled={activity.isFull}
-              >
-                {activity.isFull ? 'Fullbokad' : 'Köp biljett'}
-              </Button>
+              {activity.isFull ? (
+                <Button 
+                  className="bg-lovely-sage text-white px-8 py-3 text-lg"
+                  disabled
+                >
+                  Fullbokad
+                </Button>
+              ) : activity.isOnSale ? (
+                <Button 
+                  className="bg-lovely-red text-white px-8 py-3 text-lg"
+                  onClick={handleBuyTicket}
+                >
+                  Köp biljett
+                </Button>
+              ) : showInterestForm ? (
+                <div className="max-w-md border rounded-lg p-6">
+                  <h3 className="text-lg font-medium mb-4">Registrera intresse</h3>
+                  <form onSubmit={handleRegisterInterest} className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block mb-1 text-sm font-medium">Namn</label>
+                      <Input 
+                        id="name" 
+                        value={name} 
+                        onChange={(e) => setName(e.target.value)} 
+                        required 
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="block mb-1 text-sm font-medium">E-post</label>
+                      <Input 
+                        id="email" 
+                        type="email" 
+                        value={email} 
+                        onChange={(e) => setEmail(e.target.value)} 
+                        required 
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <Button 
+                        type="submit" 
+                        className="bg-lovely-red text-white"
+                      >
+                        Skicka
+                      </Button>
+                      <Button 
+                        type="button"
+                        variant="outline" 
+                        onClick={() => setShowInterestForm(false)}
+                      >
+                        Avbryt
+                      </Button>
+                    </div>
+                  </form>
+                </div>
+              ) : (
+                <Button 
+                  className="bg-lovely-beige text-lovely-slate px-8 py-3 text-lg"
+                  onClick={() => setShowInterestForm(true)}
+                >
+                  Registrera intresse
+                </Button>
+              )}
             </div>
           </div>
         </div>
