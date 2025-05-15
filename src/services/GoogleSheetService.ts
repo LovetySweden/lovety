@@ -72,7 +72,20 @@ class GoogleSheetService {
     }
 
     try {
-      const response = await fetch(this.activitiesUrl);
+      // Add a cache-busting parameter to avoid browser caching
+      const cacheBuster = `cacheBust=${new Date().getTime()}`;
+      const url = this.activitiesUrl.includes('?') 
+        ? `${this.activitiesUrl}&${cacheBuster}` 
+        : `${this.activitiesUrl}?${cacheBuster}`;
+      
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }
+      });
+      
       if (!response.ok) {
         throw new Error(`Failed to fetch activities: ${response.status}`);
       }
@@ -121,7 +134,20 @@ class GoogleSheetService {
     }
 
     try {
-      const response = await fetch(this.votesUrl);
+      // Add a cache-busting parameter
+      const cacheBuster = `cacheBust=${new Date().getTime()}`;
+      const url = this.votesUrl.includes('?') 
+        ? `${this.votesUrl}&${cacheBuster}` 
+        : `${this.votesUrl}?${cacheBuster}`;
+      
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        }
+      });
+      
       if (!response.ok) {
         throw new Error(`Failed to fetch vote activities: ${response.status}`);
       }
@@ -144,7 +170,7 @@ class GoogleSheetService {
     try {
       const response = await fetch(this.votesUrl, {
         method: "POST",
-        mode: "no-cors",
+        mode: "no-cors",  // This is needed for CORS issues
         headers: {
           "Content-Type": "application/json",
         },
@@ -173,7 +199,7 @@ class GoogleSheetService {
     try {
       const response = await fetch(this.participantsUrl, {
         method: "POST",
-        mode: "no-cors",
+        mode: "no-cors", // This is needed for CORS issues
         headers: {
           "Content-Type": "application/json",
         },
@@ -208,7 +234,7 @@ class GoogleSheetService {
     try {
       const response = await fetch(this.participantsUrl, {
         method: "POST",
-        mode: "no-cors",
+        mode: "no-cors", // This is needed for CORS issues
         headers: {
           "Content-Type": "application/json",
         },

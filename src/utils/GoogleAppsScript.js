@@ -1,4 +1,3 @@
-
 // This file is for reference only - Copy this code to Google Apps Script
 // This is not used directly in the React application
 
@@ -59,26 +58,47 @@ function getOrCreateSheet(sheetName, headers) {
 }
 
 /**
+ * Set CORS headers for the response
+ */
+function setCorsHeaders(response) {
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  return response;
+}
+
+/**
+ * Handle OPTIONS requests for CORS preflight
+ */
+function doOptions(e) {
+  const response = ContentService.createTextOutput();
+  return setCorsHeaders(response);
+}
+
+/**
  * Handle POST requests for all operations
  */
 function doPost(e) {
   const data = JSON.parse(e.postData.contents);
   const contentType = e.parameter.type || data.type || 'newsletter';
+  let response;
   
   if (contentType === 'newsletter') {
-    return handleNewsletterData(data);
+    response = handleNewsletterData(data);
   } else if (contentType === 'add_vote') {
-    return handleVoteData(data);
+    response = handleVoteData(data);
   } else if (contentType === 'register_interest') {
-    return handleInterestData(data);
+    response = handleInterestData(data);
   } else if (contentType === 'purchase_ticket') {
-    return handleTicketPurchaseData(data);
+    response = handleTicketPurchaseData(data);
   } else {
-    return ContentService.createTextOutput(JSON.stringify({
+    response = ContentService.createTextOutput(JSON.stringify({
       result: 'error',
       message: 'Unknown content type'
     })).setMimeType(ContentService.MimeType.JSON);
   }
+  
+  return setCorsHeaders(response);
 }
 
 /**
@@ -517,26 +537,29 @@ function sendOneDayReminder() {
  */
 function doGet(e) {
   const dataType = e.parameter.type || 'activities';
+  let response;
   
   try {
     if (dataType === 'activities') {
-      return getActivities();
+      response = getActivities();
     } else if (dataType === 'votes') {
-      return getVoteActivities();
+      response = getVoteActivities();
     } else if (dataType === 'fields') {
-      return getActivityFields(e.parameter.activityId);
+      response = getActivityFields(e.parameter.activityId);
     } else {
-      return ContentService.createTextOutput(JSON.stringify({
+      response = ContentService.createTextOutput(JSON.stringify({
         result: 'error',
         message: 'Unknown data type'
       })).setMimeType(ContentService.MimeType.JSON);
     }
   } catch (error) {
-    return ContentService.createTextOutput(JSON.stringify({
+    response = ContentService.createTextOutput(JSON.stringify({
       result: 'error',
       message: error.toString()
     })).setMimeType(ContentService.MimeType.JSON);
   }
+  
+  return setCorsHeaders(response);
 }
 
 /**
