@@ -11,6 +11,7 @@ type ActivityCardProps = {
   id: number;
   isFull?: boolean;
   isOnSale?: boolean;
+  price: string;
 };
 
 const ActivityCard = ({ 
@@ -21,7 +22,8 @@ const ActivityCard = ({
   location, 
   id, 
   isFull = false,
-  isOnSale = true 
+  isOnSale = true,
+  price 
 }: ActivityCardProps) => {
   return (
     <div className="activity-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-3">
@@ -31,12 +33,13 @@ const ActivityCard = ({
       <h3 className="font-serif font-medium text-lg mb-1">{title}</h3>
       <p className="text-sm text-lovely-slate mb-1">{date}</p>
       <p className="text-sm text-lovely-slate mb-1">{time}</p>
-      <p className="text-sm text-lovely-slate mb-3">{location}</p>
+      <p className="text-sm text-lovely-slate mb-1">{location}</p>
+      <p className="text-sm font-medium text-lovely-slate mb-3">{price}</p>
       <Link to={`/activity/${id}`}>
         <Button 
           className={`${
             isFull ? 'bg-lovely-sage text-white' : 
-            isOnSale ? 'bg-lovely-red text-white' : 'bg-lovely-beige text-lovely-slate'
+            isOnSale ? 'bg-lovely-red text-white' : 'bg-lovely-coral text-white'
           } w-full hover:opacity-90`}
           disabled={isFull}
         >

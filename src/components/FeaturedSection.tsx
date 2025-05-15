@@ -1,6 +1,4 @@
 
-import { Button } from "./ui/button";
-
 const FeaturedSection = () => {
   return (
     <div className="bg-lovely-beige py-12 px-4 md:px-8">
@@ -20,7 +18,6 @@ const FeaturedSection = () => {
             <p className="mb-6">
               Våra värdar skapar äkta möten mellan människor under olika typer av aktiviteter.
             </p>
-            <Button className="bg-lovely-red hover:bg-opacity-90">Se aktiviteter</Button>
           </div>
           <div className="md:w-1/2">
             <img 

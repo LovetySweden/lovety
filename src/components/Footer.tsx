@@ -17,21 +17,6 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row gap-8 md:gap-16">
-            <div className="mb-6 md:mb-0">
-              <h4 className="font-serif text-lovely-red font-medium mb-3">Aktiviteter</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Kommande aktiviteter</a></li>
-                <li><a href="#" className="hover:underline">Föreslå en aktivitet</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-serif text-lovely-red font-medium mb-3">Juridisk information</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="hover:underline">Integritetspolicy</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
         <div className="border-t border-lovely-sage/20 pt-4 text-sm text-lovely-slate">
           <p>© {new Date().getFullYear()} Lovety. Alla rättigheter förbehållna.</p>

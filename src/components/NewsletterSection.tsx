@@ -15,7 +15,7 @@ const NewsletterSection = () => {
     if (!name || !email) {
       toast({
         title: "Error",
-        description: "Please fill in all fields",
+        description: "Vänligen fyll i alla fält",
         variant: "destructive"
       });
       return;
@@ -45,14 +45,14 @@ const NewsletterSection = () => {
       setName("");
       setEmail("");
       toast({
-        title: "Success!",
-        description: "Thank you for signing up for our newsletter!",
+        title: "Tack!",
+        description: "Tack för din prenumeration på vårt nyhetsbrev!",
       });
     } catch (error) {
       console.error("Error submitting form:", error);
       toast({
-        title: "Error",
-        description: "Something went wrong. Please try again later.",
+        title: "Fel",
+        description: "Något gick fel. Vänligen försök igen senare.",
         variant: "destructive"
       });
     } finally {
@@ -63,7 +63,7 @@ const NewsletterSection = () => {
   return (
     <div id="newsletter" className="bg-lovely-beige py-12 px-4 md:px-8 scroll-mt-24">
       <div className="container mx-auto">
-        <h2 className="section-title">Sign up for our newsletter</h2>
+        <h2 className="section-title">Prenumerera på vårt nyhetsbrev</h2>
         <p className="mb-6">Få nya aktiviteter direkt i din inkorg</p>
         
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl">
@@ -95,7 +95,7 @@ const NewsletterSection = () => {
               className="bg-lovely-red hover:bg-opacity-90 w-full"
               disabled={isSubmitting}
             >
-              {isSubmitting ? "Skickar..." : "Bli medlem"}
+              {isSubmitting ? "Skickar..." : "Prenumerera"}
             </Button>
           </div>
         </form>

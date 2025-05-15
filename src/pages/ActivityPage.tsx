@@ -1,127 +1,79 @@
-import { useParams } from 'react-router-dom';
-import { useState } from 'react';
+
+import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useToast } from "@/components/ui/use-toast";
-
-// Mock data - in a real application this would come from an API
-const activities = [
-  {
-    id: 1,
-    image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07",
-    title: "Filosofikväll på café",
-    date: "Torsdag, 18 maj",
-    time: "18:30 - 21:30",
-    location: "Stockholm",
-    description: "En avslappnad kväll med filosofiska diskussioner på ett mysigt café i centrala Stockholm. Alla är välkomna oavsett tidigare erfarenhet av filosofi.",
-    price: "150 kr",
-    isOnSale: true,
-    isFull: false
-  },
-  {
-    id: 2,
-    image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
-    title: "Vandring i Tyresta",
-    date: "Söndag, 21 maj",
-    time: "10:00 - 14:00",
-    location: "Tyresta",
-    description: "Upplev naturen i Tyresta nationalpark med en guidad vandring. Vi samlas vid entrén och går en vacker led tillsammans.",
-    price: "200 kr",
-    isOnSale: true,
-    isFull: false
-  },
-  {
-    id: 3,
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-    title: "Matlagningskurs",
-    date: "Fredag, 19 maj",
-    time: "18:00 - 22:00",
-    location: "Stockholm",
-    description: "Lär dig laga italiensk mat från grunden under ledning av en professionell kock.",
-    price: "450 kr",
-    isOnSale: true,
-    isFull: true
-  },
-  {
-    id: 4,
-    image: "https://images.unsplash.com/photo-1501854140801-50d01698950b",
-    title: "Vinprovning för nybörjare",
-    date: "Lördag, 20 maj",
-    time: "18:30 - 21:00",
-    location: "Stockholm",
-    description: "Introduktion till vinets värld med fokus på röda viner från olika regioner.",
-    price: "350 kr",
-    isOnSale: false,
-    isFull: false
-  },
-  {
-    id: 5,
-    image: "https://images.unsplash.com/photo-1615729947596-a598e5de0ab3",
-    title: "Paddla kajak",
-    date: "Onsdag, 24 maj",
-    time: "17:00 - 20:00",
-    location: "Djurgården",
-    description: "Utforska Stockholms vattenvägar från kajak. Utrustning och instruktör ingår.",
-    price: "300 kr",
-    isFull: false
-  },
-  {
-    id: 6,
-    image: "https://images.unsplash.com/photo-1551038247-3d9af20df552",
-    title: "Tjejkväll med Spa",
-    date: "Lördag, 27 maj",
-    time: "17:00 - 21:00",
-    location: "Stockholm",
-    description: "En avkopplande kväll med spa-behandlingar, bubbel och snacks.",
-    price: "500 kr",
-    isFull: true
-  },
-  {
-    id: 7,
-    image: "https://images.unsplash.com/photo-1524230572899-a752b3835840",
-    title: "Dans för nybörjare",
-    date: "Tisdag, 23 maj",
-    time: "18:30 - 20:30",
-    location: "Stockholm",
-    description: "Grundläggande steg i pardans för nybörjare. Ingen partner krävs!",
-    price: "200 kr",
-    isFull: false
-  },
-  {
-    id: 8,
-    image: "https://images.unsplash.com/photo-1493397212122-2b85dda8106b",
-    title: "Cykeltur runt Mälaren",
-    date: "Lördag, 3 juni",
-    time: "09:00 - 16:00",
-    location: "Stockholm",
-    description: "En vacker cykeltur runt delar av Mälaren med flera stopp för fika och bad.",
-    price: "250 kr",
-    isFull: false
-  }
-];
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { googleSheetService, ActivityDetails, ParticipantField } from '@/services/GoogleSheetService';
+import { Card, CardContent } from "@/components/ui/card";
 
 const ActivityPage = () => {
   const { id } = useParams<{ id: string }>();
   const activityId = parseInt(id || "0");
+  const navigate = useNavigate();
   const { toast } = useToast();
   
-  const activity = activities.find(a => a.id === activityId);
+  const [activity, setActivity] = useState<ActivityDetails | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   
   const [showInterestForm, setShowInterestForm] = useState(false);
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [paymentMethod, setPaymentMethod] = useState<'card' | 'swish'>('card');
+  const [formValues, setFormValues] = useState<Record<string, string>>({});
+  const [termsAccepted, setTermsAccepted] = useState(false);
   
-  if (!activity) {
+  // Fetch activity details
+  useEffect(() => {
+    const fetchActivity = async () => {
+      setIsLoading(true);
+      try {
+        const activityData = await googleSheetService.fetchActivityDetails(activityId);
+        if (activityData) {
+          setActivity(activityData);
+          setError(null);
+        } else {
+          setError("Aktiviteten kunde inte hittas");
+        }
+      } catch (error) {
+        console.error("Error fetching activity:", error);
+        setError("Kunde inte ladda aktiviteten");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchActivity();
+  }, [activityId]);
+  
+  if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col">
         <Header />
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center pt-24">
+          <p>Laddar aktivitet...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+  
+  if (error || !activity) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <div className="flex-1 flex items-center justify-center pt-24">
           <div className="text-center">
-            <h1 className="text-2xl font-bold mb-4">Aktiviteten kunde inte hittas</h1>
-            <Button className="bg-lovely-red hover:bg-opacity-90" onClick={() => window.history.back()}>
-              Tillbaka
+            <h1 className="text-2xl font-bold mb-4">{error || "Aktiviteten kunde inte hittas"}</h1>
+            <Button className="bg-lovely-red hover:bg-opacity-90" onClick={() => navigate('/')}>
+              Tillbaka till startsidan
             </Button>
           </div>
         </div>
@@ -131,35 +83,163 @@ const ActivityPage = () => {
   }
 
   const handleBuyTicket = () => {
-    // In a real application, this would redirect to a payment page
-    toast({
-      title: "Bokning påbörjad",
-      description: "Du kommer nu att omdirigeras till betalningssidan.",
-    });
+    setShowPaymentForm(true);
   };
 
-  const handleRegisterInterest = (e: React.FormEvent) => {
+  const handleRegisterInterest = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // In a real application, you would send this data to your backend
-    const interestData = {
-      activityId,
-      name,
-      email
-    };
+    if (!name || !email) {
+      toast({
+        title: "Fel",
+        description: "Vänligen fyll i alla obligatoriska fält",
+        variant: "destructive"
+      });
+      return;
+    }
     
-    console.log("Interest registered:", interestData);
+    try {
+      const success = await googleSheetService.registerInterest(activityId, name, email);
+      
+      if (success) {
+        toast({
+          title: "Intresse registrerat",
+          description: "Vi meddelar dig när aktiviteten släpps för bokning.",
+        });
+        
+        // Reset form
+        setName("");
+        setEmail("");
+        setShowInterestForm(false);
+      } else {
+        throw new Error("Failed to register interest");
+      }
+    } catch (error) {
+      console.error("Error registering interest:", error);
+      toast({
+        title: "Fel",
+        description: "Kunde inte registrera ditt intresse. Försök igen senare.",
+        variant: "destructive"
+      });
+    }
+  };
+
+  const handlePaymentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     
-    // Show success message
-    toast({
-      title: "Intresse registrerat",
-      description: "Vi meddelar dig när aktiviteten släpps för bokning.",
-    });
+    // Validate form fields
+    const requiredFields = activity.participantFields.filter(field => field.required);
+    for (const field of requiredFields) {
+      if (!formValues[field.id]) {
+        toast({
+          title: "Fel",
+          description: `Vänligen fyll i fältet: ${field.name}`,
+          variant: "destructive"
+        });
+        return;
+      }
+    }
     
-    // Reset form
-    setName("");
-    setEmail("");
-    setShowInterestForm(false);
+    if (!termsAccepted) {
+      toast({
+        title: "Fel",
+        description: "Du måste acceptera villkoren för att fortsätta",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    // Process payment
+    try {
+      const success = await googleSheetService.purchaseTicket(activityId, paymentMethod, formValues);
+      
+      if (success) {
+        // In a real implementation, you would redirect to a payment gateway
+        toast({
+          title: "Betalning initierad",
+          description: "Du kommer nu att omdirigeras till betalningssidan.",
+        });
+        
+        // Simulate redirect to payment page
+        setTimeout(() => {
+          toast({
+            title: "Betalning godkänd",
+            description: "Din bokning har bekräftats!",
+          });
+          setShowPaymentForm(false);
+          setFormValues({});
+          setTermsAccepted(false);
+        }, 2000);
+      } else {
+        throw new Error("Failed to process payment");
+      }
+    } catch (error) {
+      console.error("Error processing payment:", error);
+      toast({
+        title: "Betalningsfel",
+        description: "Något gick fel vid betalningen. Försök igen senare.",
+        variant: "destructive"
+      });
+    }
+  };
+  
+  const renderFormField = (field: ParticipantField) => {
+    switch (field.type) {
+      case 'text':
+      case 'email':
+      case 'phone':
+        return (
+          <div key={field.id} className="mb-4">
+            <Label htmlFor={field.id} className="block mb-1 text-sm font-medium">
+              {field.name} {field.required && <span className="text-red-500">*</span>}
+            </Label>
+            <Input 
+              id={field.id}
+              type={field.type === 'email' ? 'email' : 'text'} 
+              value={formValues[field.id] || ''}
+              onChange={(e) => setFormValues({...formValues, [field.id]: e.target.value})}
+              required={field.required}
+            />
+          </div>
+        );
+      case 'select':
+        return (
+          <div key={field.id} className="mb-4">
+            <Label htmlFor={field.id} className="block mb-1 text-sm font-medium">
+              {field.name} {field.required && <span className="text-red-500">*</span>}
+            </Label>
+            <select 
+              id={field.id}
+              className="w-full border rounded-md p-2"
+              value={formValues[field.id] || ''}
+              onChange={(e) => setFormValues({...formValues, [field.id]: e.target.value})}
+              required={field.required}
+            >
+              <option value="">Välj ett alternativ</option>
+              {field.options?.map(option => (
+                <option key={option} value={option}>{option}</option>
+              ))}
+            </select>
+          </div>
+        );
+      case 'checkbox':
+        return (
+          <div key={field.id} className="flex items-center mb-4">
+            <Checkbox 
+              id={field.id}
+              checked={formValues[field.id] === 'true'}
+              onCheckedChange={(checked) => 
+                setFormValues({...formValues, [field.id]: checked ? 'true' : 'false'})
+              }
+            />
+            <Label htmlFor={field.id} className="ml-2 text-sm">
+              {field.name} {field.required && <span className="text-red-500">*</span>}
+            </Label>
+          </div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
@@ -211,12 +291,71 @@ const ActivityPage = () => {
                   Fullbokad
                 </Button>
               ) : activity.isOnSale ? (
-                <Button 
-                  className="bg-lovely-red text-white px-8 py-3 text-lg"
-                  onClick={handleBuyTicket}
-                >
-                  Köp biljett
-                </Button>
+                showPaymentForm ? (
+                  <Card className="mt-6 max-w-2xl">
+                    <CardContent className="pt-6">
+                      <h3 className="text-xl font-medium mb-4">Boka biljett</h3>
+                      <form onSubmit={handlePaymentSubmit} className="space-y-4">
+                        {/* Participant information fields */}
+                        {activity.participantFields.map(renderFormField)}
+                        
+                        {/* Payment method selection */}
+                        <div className="mb-6">
+                          <h4 className="text-lg font-medium mb-2">Betalningsmetod</h4>
+                          <RadioGroup 
+                            value={paymentMethod} 
+                            onValueChange={(value) => setPaymentMethod(value as 'card' | 'swish')}
+                            className="flex flex-col space-y-2"
+                          >
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="card" id="card" />
+                              <Label htmlFor="card">Kortbetalning</Label>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <RadioGroupItem value="swish" id="swish" />
+                              <Label htmlFor="swish">Swish</Label>
+                            </div>
+                          </RadioGroup>
+                        </div>
+                        
+                        {/* Terms and conditions */}
+                        <div className="flex items-start space-x-2">
+                          <Checkbox 
+                            id="terms" 
+                            checked={termsAccepted}
+                            onCheckedChange={(checked) => setTermsAccepted(!!checked)} 
+                          />
+                          <Label htmlFor="terms" className="text-sm">
+                            Jag accepterar <a href="#" className="text-lovely-red underline">villkoren</a> för denna aktivitet
+                          </Label>
+                        </div>
+                        
+                        <div className="flex gap-2">
+                          <Button 
+                            type="submit" 
+                            className="bg-lovely-red text-white"
+                          >
+                            Betala {activity.price}
+                          </Button>
+                          <Button 
+                            type="button"
+                            variant="outline" 
+                            onClick={() => setShowPaymentForm(false)}
+                          >
+                            Avbryt
+                          </Button>
+                        </div>
+                      </form>
+                    </CardContent>
+                  </Card>
+                ) : (
+                  <Button 
+                    className="bg-lovely-red text-white px-8 py-3 text-lg"
+                    onClick={handleBuyTicket}
+                  >
+                    Köp biljett
+                  </Button>
+                )
               ) : showInterestForm ? (
                 <div className="max-w-md border rounded-lg p-6">
                   <h3 className="text-lg font-medium mb-4">Registrera intresse</h3>
@@ -259,7 +398,7 @@ const ActivityPage = () => {
                 </div>
               ) : (
                 <Button 
-                  className="bg-lovely-beige text-lovely-slate px-8 py-3 text-lg"
+                  className="bg-lovely-coral text-white px-8 py-3 text-lg"
                   onClick={() => setShowInterestForm(true)}
                 >
                   Registrera intresse
