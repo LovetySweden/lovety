@@ -32,6 +32,38 @@ class GoogleSheetService {
     this.participantsUrl = import.meta.env.VITE_GOOGLE_PARTICIPANTS_SHEET_URL || "";
   }
 
+  // Set Google Sheet URLs
+  setUrls(activities: string, votes: string, participants: string) {
+    this.activitiesUrl = activities;
+    this.votesUrl = votes;
+    this.participantsUrl = participants;
+    
+    // Save URLs to localStorage for persistence
+    localStorage.setItem('lovety_activities_url', activities);
+    localStorage.setItem('lovety_votes_url', votes);
+    localStorage.setItem('lovety_participants_url', participants);
+    
+    console.log("Google Sheet URLs have been updated");
+    return true;
+  }
+  
+  // Load URLs from localStorage (if available)
+  loadSavedUrls() {
+    const activitiesUrl = localStorage.getItem('lovety_activities_url');
+    const votesUrl = localStorage.getItem('lovety_votes_url');
+    const participantsUrl = localStorage.getItem('lovety_participants_url');
+    
+    if (activitiesUrl) this.activitiesUrl = activitiesUrl;
+    if (votesUrl) this.votesUrl = votesUrl;
+    if (participantsUrl) this.participantsUrl = participantsUrl;
+    
+    return {
+      activitiesUrl: this.activitiesUrl,
+      votesUrl: this.votesUrl,
+      participantsUrl: this.participantsUrl
+    };
+  }
+
   // Fetch all activities
   async fetchActivities(): Promise<Activity[]> {
     if (!this.activitiesUrl) {
@@ -199,3 +231,6 @@ class GoogleSheetService {
 }
 
 export const googleSheetService = new GoogleSheetService();
+
+// Load saved URLs on initialization
+googleSheetService.loadSavedUrls();
