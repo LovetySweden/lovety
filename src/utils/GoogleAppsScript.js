@@ -1,3 +1,4 @@
+
 // This file is for reference only - Copy this code to Google Apps Script
 // This is not used directly in the React application
 
@@ -61,9 +62,11 @@ function getOrCreateSheet(sheetName, headers) {
  * Set CORS headers for the response
  */
 function setCorsHeaders(response) {
+  // Allow from any origin
   response.setHeader('Access-Control-Allow-Origin', '*');
   response.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  response.setHeader('Access-Control-Max-Age', '3600');
   return response;
 }
 
@@ -71,8 +74,9 @@ function setCorsHeaders(response) {
  * Handle OPTIONS requests for CORS preflight
  */
 function doOptions(e) {
-  const response = ContentService.createTextOutput();
-  return setCorsHeaders(response);
+  const response = ContentService.createTextOutput('');
+  setCorsHeaders(response);
+  return response;
 }
 
 /**
