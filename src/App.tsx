@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import ActivityPage from "./pages/ActivityPage";
 import NotFound from "./pages/NotFound";
-import GoogleSheetConfig from "./components/GoogleSheetConfig";
+import ActivityManager from "./components/ActivityManager";
 
 const queryClient = new QueryClient();
 
@@ -20,10 +20,10 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/activity/:id" element={<ActivityPage />} />
+          <Route path="/manage-activities" element={<ActivityManager />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <GoogleSheetConfig />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
