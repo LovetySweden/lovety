@@ -7,13 +7,21 @@ const AboutSection = () => {
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
             <p className="mb-4">
-              Lovely är aktiviteter för alla som vill träffa nya vänner och potentiella partners genom roliga och meningsfulla aktiviteter.
+              Lovety är en mötesplats för singlar som inte bara vill träffa någon, utan vill träffa den rätta.
             </p>
             <p className="mb-4">
-              Vi skapar tillfällen där man kan ha kul tillsammans genom att göra något man tycker om, inte bara träffas för träffandets skull. Att göra något tillsammans skapar samtalsämnen och ger naturliga möten.
+              Vår grundare ville skapa ett alternativ till ytliga appar och krystade dejter.            </p>
+            <p className="mb-4">
+              Resultatet blev Lovety, en mötesplats med fysiska träffar, events och ett inkluderande sammanhang där du kan vara dig själv och där äkta kontakt kan uppstå naturligt – oavsett om det leder till vänskap, kärlek eller något annat.
             </p>
             <p className="mb-4">
-              Med våra olika aktiviteter finns det något för alla - från matlagningskurser och filosofikvällar till vandring och dans. Och vem vet, kanske träffar du kärleken!
+              Alla är vi perfekta på vårt eget sätt. Vi behöver bara hitta den vi är perfekta med.
+            </p>
+            <p className="mb-4">
+              Att vara kär är underbart. 
+            </p>
+            <p className="mb-4">
+              Vi vill skapa möjligheter för alla att hitta och uppleva kärleken. På riktigt. 
             </p>
           </div>
           <div className="md:w-1/2 grid grid-cols-2 gap-4">
