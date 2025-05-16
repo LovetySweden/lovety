@@ -7,16 +7,16 @@ const FeaturedSection = () => {
         <div className="flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-1/2">
             <p className="text-lg mb-4">
-              Det är så mycket roligare att göra saker tillsammans!
+              Trött på ytliga dating appar? Krystade dejter?
             </p>
             <p className="mb-6">
-              Lovely är en mötesplats där man träffar nya vänner genom roliga och intressanta aktiviteter. Det är lättare att lära känna folk när man har något gemensamt att göra och prata om.
+              Lovety är en mötesplats där du kan vara dig själv, träffa andra singlar som delar dina intressen och lära känna varandra under avslappnade former.
             </p>
             <p className="mb-6">
-              Det finns vägar, stigar och gångar man aldrig skulle ha provat om man inte hittat någon att följa.
+              Det finns något för alla, både den som föredrar mer stillsamma event och den som älskar det fartfyllda!
             </p>
             <p className="mb-6">
-              Våra värdar skapar äkta möten mellan människor under olika typer av aktiviteter.
+              Våga utmana dig och träffa nya människor under roliga aktiviteter och event i Umeå! 
             </p>
           </div>
           <div className="md:w-1/2">
