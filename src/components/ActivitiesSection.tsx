@@ -52,7 +52,7 @@ const ActivitiesSection = () => {
     <div className="bg-lovely-cream py-12 px-4 md:px-8">
       <div className="container mx-auto">
         <h2 className="section-title">Aktiviteter</h2>
-        <p className="mb-6">Delta i någon av våra populära aktiviteter och träffa nya vänner</p>
+        <p className="mb-6">Delta i någon av våra populära aktiviteter och träffa andra singlar med liknande intressen.</p>
         
         {isLoading ? (
           <div className="flex justify-center py-12">
