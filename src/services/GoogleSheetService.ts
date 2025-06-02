@@ -25,7 +25,7 @@ class GoogleSheetService {
   private activitiesUrl: string;
   private votesUrl: string;
   private participantsUrl: string;
-  
+
   constructor() {
     this.activitiesUrl = import.meta.env.VITE_GOOGLE_ACTIVITIES_SHEET_URL || "";
     this.votesUrl = import.meta.env.VITE_GOOGLE_VOTES_SHEET_URL || "";
@@ -37,26 +37,26 @@ class GoogleSheetService {
     this.activitiesUrl = activities;
     this.votesUrl = votes;
     this.participantsUrl = participants;
-    
+
     // Save URLs to localStorage for persistence
     localStorage.setItem('lovety_activities_url', activities);
     localStorage.setItem('lovety_votes_url', votes);
     localStorage.setItem('lovety_participants_url', participants);
-    
+
     console.log("Google Sheet URLs have been updated");
     return true;
   }
-  
+
   // Load URLs from localStorage (if available)
   loadSavedUrls() {
     const activitiesUrl = localStorage.getItem('lovety_activities_url');
     const votesUrl = localStorage.getItem('lovety_votes_url');
     const participantsUrl = localStorage.getItem('lovety_participants_url');
-    
+
     if (activitiesUrl) this.activitiesUrl = activitiesUrl;
     if (votesUrl) this.votesUrl = votesUrl;
     if (participantsUrl) this.participantsUrl = participantsUrl;
-    
+
     return {
       activitiesUrl: this.activitiesUrl,
       votesUrl: this.votesUrl,
@@ -68,16 +68,16 @@ class GoogleSheetService {
   async fetchActivities(): Promise<Activity[]> {
     if (!this.activitiesUrl) {
       console.log("Google Activities Sheet URL not configured");
-      return [];
+      return this.getMockActivities();
     }
 
     try {
       // Add a cache-busting parameter to avoid browser caching
       const cacheBuster = `cacheBust=${new Date().getTime()}`;
-      const url = this.activitiesUrl.includes('?') 
-        ? `${this.activitiesUrl}&${cacheBuster}` 
+      const url = this.activitiesUrl.includes('?')
+        ? `${this.activitiesUrl}&${cacheBuster}`
         : `${this.activitiesUrl}?${cacheBuster}`;
-      
+
       // Use no-cors mode for GET requests to handle CORS preflight issues
       const response = await fetch(url, {
         method: "GET",
@@ -87,7 +87,7 @@ class GoogleSheetService {
           "Accept": "application/json"
         }
       });
-      
+
       // Since we're using no-cors, we need to handle the response differently
       // We'll create a mock response for development purposes
       // In production, the Google Apps Script should be properly configured for CORS
@@ -95,11 +95,11 @@ class GoogleSheetService {
         console.log("Received opaque response due to CORS. Using mock data for development.");
         return this.getMockActivities();
       }
-      
+
       if (!response.ok) {
         throw new Error(`Failed to fetch activities: ${response.status}`);
       }
-      
+
       const data = await response.json();
       return Array.isArray(data) ? data : [];
     } catch (error) {
@@ -120,7 +120,7 @@ class GoogleSheetService {
         location: "Stadsparken",
         description: "Lugn yoga för alla nivåer i natursköna omgivningar.",
         price: "150 kr",
-        image: "https://images.unsplash.com/photo-1599447292461-16598f24379d",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
         isOnSale: true
       },
@@ -156,9 +156,9 @@ class GoogleSheetService {
     try {
       const activities = await this.fetchActivities();
       const activity = activities.find(a => a.id === id);
-      
+
       if (!activity) return null;
-      
+
       // In a real implementation, you would fetch the custom fields from another endpoint
       // This is a placeholder implementation
       const customFields: ParticipantField[] = [
@@ -166,7 +166,7 @@ class GoogleSheetService {
         { id: 'email', name: 'E-post', required: true, type: 'email' },
         { id: 'phone', name: 'Telefon', required: false, type: 'phone' }
       ];
-      
+
       return {
         ...activity,
         participantFields: customFields,
@@ -189,10 +189,10 @@ class GoogleSheetService {
     try {
       // Add a cache-busting parameter
       const cacheBuster = `cacheBust=${new Date().getTime()}`;
-      const url = this.votesUrl.includes('?') 
-        ? `${this.votesUrl}&${cacheBuster}` 
+      const url = this.votesUrl.includes('?')
+        ? `${this.votesUrl}&${cacheBuster}`
         : `${this.votesUrl}?${cacheBuster}`;
-      
+
       // Use no-cors mode for GET requests to handle CORS preflight issues
       const response = await fetch(url, {
         method: "GET",
@@ -202,17 +202,17 @@ class GoogleSheetService {
           "Accept": "application/json"
         }
       });
-      
+
       // Since we're using no-cors, we need to handle the response differently
       if (response.type === 'opaque') {
         console.log("Received opaque response due to CORS. Using mock data for development.");
         return this.getMockVoteActivities();
       }
-      
+
       if (!response.ok) {
         throw new Error(`Failed to fetch vote activities: ${response.status}`);
       }
-      
+
       const data = await response.json();
       return Array.isArray(data) ? data : [];
     } catch (error) {
@@ -253,7 +253,7 @@ class GoogleSheetService {
           timestamp: new Date().toISOString()
         }),
       });
-      
+
       // Since we're using no-cors, we won't get a proper response status
       return true;
     } catch (error) {
@@ -284,7 +284,7 @@ class GoogleSheetService {
           timestamp: new Date().toISOString()
         }),
       });
-      
+
       // Since we're using no-cors, we won't get a proper response status
       return true;
     } catch (error) {
@@ -295,7 +295,7 @@ class GoogleSheetService {
 
   // Purchase ticket for an activity
   async purchaseTicket(
-    activityId: number, 
+    activityId: number,
     paymentMethod: 'card' | 'swish',
     formData: Record<string, string>
   ): Promise<boolean> {
@@ -319,7 +319,7 @@ class GoogleSheetService {
           timestamp: new Date().toISOString()
         }),
       });
-      
+
       // Since we're using no-cors, we won't get a proper response status
       return true;
     } catch (error) {

@@ -9,7 +9,7 @@ import { googleSheetService, VoteActivity } from "@/services/GoogleSheetService"
 // Local storage key for votes
 const VOTED_FEATURES_KEY = "lovety_voted_features";
 
-const FeatureSection = () => {
+const Vote = () => {
   const [features, setFeatures] = useState<VoteActivity[]>([]);
   const [votedFeatures, setVotedFeatures] = useState<number[]>([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -53,23 +53,23 @@ const FeatureSection = () => {
     if (votedFeatures.includes(id)) {
       return;
     }
-    
+
     try {
       const success = await googleSheetService.addVote(id);
-      
+
       if (success) {
         // Update votes locally
-        setFeatures(features.map(feature => 
-          feature.id === id 
-          ? { ...feature, votes: feature.votes + 1 } 
+        setFeatures(features.map(feature =>
+          feature.id === id
+          ? { ...feature, votes: feature.votes + 1 }
           : feature
         ));
-        
+
         // Save vote in state and local storage
         const updatedVotes = [...votedFeatures, id];
         setVotedFeatures(updatedVotes);
         localStorage.setItem(VOTED_FEATURES_KEY, JSON.stringify(updatedVotes));
-        
+
         // Show success toast
         toast({
           title: "Tack för din röst!",
@@ -93,7 +93,7 @@ const FeatureSection = () => {
       <div className="container mx-auto">
         <h2 className="section-title">Rösta på kommande aktiviteter</h2>
         <p className="mb-6">Har du preferenser på aktiviteter? Rösta på nedanstående eller föreslå egna!</p>
-        
+
         {isLoading ? (
           <div className="flex justify-center py-6">
             <p>Laddar aktiviteter att rösta på...</p>
@@ -102,16 +102,16 @@ const FeatureSection = () => {
           <ul className="space-y-4 max-w-2xl">
             {features.map((feature) => {
               const hasVoted = votedFeatures.includes(feature.id);
-              
+
               return (
                 <li key={feature.id} className="flex items-center group">
                   <div className="flex items-center mr-3">
                     <HoverCard>
                       <HoverCardTrigger asChild>
                         <div>
-                          <Button 
+                          <Button
                             onClick={() => handleVote(feature.id)}
-                            variant="ghost" 
+                            variant="ghost"
                             className={`h-auto p-1 ${hasVoted ? 'text-lovely-red' : 'text-gray-400'} hover:text-lovely-red hover:bg-lovely-beige/50`}
                             disabled={hasVoted}
                           >
@@ -123,12 +123,12 @@ const FeatureSection = () => {
                         {hasVoted ? 'Du har redan röstat på denna aktivitet' : 'Klicka för att rösta på denna aktivitet'}
                       </HoverCardContent>
                     </HoverCard>
-                    
+
                     <span className="bg-lovely-beige rounded-full px-3 py-1 text-sm">
                       {feature.votes}
                     </span>
                   </div>
-                  
+
                   <div className="flex-1">
                     <span>{feature.text}</span>
                   </div>
@@ -142,4 +142,4 @@ const FeatureSection = () => {
   );
 };
 
-export default FeatureSection;
+export default Vote;

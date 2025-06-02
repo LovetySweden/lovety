@@ -19,14 +19,9 @@ const ActivitiesSection = () => {
 
     try {
       const data = await googleSheetService.fetchActivities();
-      
-      // Only update activities if we got valid data
+
       if (Array.isArray(data) && data.length > 0) {
         setActivities(data);
-        toast({
-          title: "Aktiviteter uppdaterade",
-          description: `${data.length} aktiviteter laddades framgångsrikt.`,
-        });
       } else {
         throw new Error("Invalid data format received");
       }
@@ -53,7 +48,7 @@ const ActivitiesSection = () => {
       <div className="container mx-auto">
         <h2 className="section-title">Aktiviteter</h2>
         <p className="mb-6">Delta i någon av våra populära aktiviteter och träffa nya vänner</p>
-        
+
         {isLoading ? (
           <div className="flex justify-center py-12">
             <p className="text-lg">Laddar aktiviteter...</p>
@@ -68,7 +63,7 @@ const ActivitiesSection = () => {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {activities.map(activity => (
-              <ActivityCard 
+              <ActivityCard
                 key={activity.id}
                 id={activity.id}
                 image={activity.image}

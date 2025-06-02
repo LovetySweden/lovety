@@ -1,5 +1,5 @@
 
-const FeaturedSection = () => {
+const FunTogether = () => {
   return (
     <div className="bg-lovely-beige py-12 px-4 md:px-8">
       <div className="container mx-auto">
@@ -16,13 +16,13 @@ const FeaturedSection = () => {
               Det finns något för alla, både den som föredrar mer stillsamma event och den som älskar det fartfyllda!
             </p>
             <p className="mb-6">
-              Våga utmana dig och träffa nya människor under roliga aktiviteter och event i Umeå! 
+              Våga utmana dig och träffa nya människor under roliga aktiviteter och event i Umeå!
             </p>
           </div>
           <div className="md:w-1/2">
-            <img 
-              src="https://images.unsplash.com/photo-1493397212122-2b85dda8106b" 
-              alt="People biking together" 
+            <img
+              src="https://images.unsplash.com/photo-1493397212122-2b85dda8106b"
+              alt="People biking together"
               className="rounded-lg w-full h-auto object-cover"
             />
           </div>
@@ -32,4 +32,4 @@ const FeaturedSection = () => {
   );
 };
 
-export default FeaturedSection;
+export default FunTogether;
