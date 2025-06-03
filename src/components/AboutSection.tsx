@@ -12,13 +12,13 @@ const AboutSection = () => {
             <p className="mb-4">
               Vår grundare ville skapa ett alternativ till ytliga appar och krystade dejter.            </p>
             <p className="mb-4">
-              Resultatet blev Lovety, en mötesplats med fysiska träffar, events och ett inkluderande sammanhang där du kan vara dig själv och där äkta kontakt kan uppstå naturligt – oavsett om det leder till vänskap, kärlek eller något annat.
+              Resultatet blev Lovety, en mötesplats med fysiska träffar och ett inkluderande sammanhang där du kan vara dig själv och där äkta kontakt kan uppstå naturligt – oavsett om det leder till vänskap, kärlek eller något annat.
             </p>
             <p className="mb-4">
-              Alla är vi perfekta på vårt eget sätt. Vi behöver bara hitta den vi är perfekta med.
+              Alla är vi perfekta som vi är. Vi behöver bara hitta den vi är perfekta tillsammans med också.
             </p>
             <p className="mb-4">
-              Att vara kär är underbart. 
+              Att vara kär är helt underbart. 
             </p>
             <p className="mb-4">
               Vi vill skapa möjligheter för alla att hitta och uppleva kärleken. På riktigt. 
