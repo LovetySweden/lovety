@@ -123,7 +123,7 @@ class GoogleSheetService {
         price: "225 kr",
         image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
-        isOnSale: true
+        isOnSale: false
       },
       {
         id: 2,
