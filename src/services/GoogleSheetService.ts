@@ -114,12 +114,30 @@ class GoogleSheetService {
     return [
       {
         id: 1,
-        title: "Yoga i parken",
-        date: "2025-06-15",
-        time: "10:00",
-        location: "Stadsparken",
-        description: "Lugn yoga för alla nivåer i natursköna omgivningar.",
-        price: "150 kr",
+        title: "Fotbollsgolf, 35+",
+        date: "18 juni",
+        time: "18:30-20:30",
+        location: "Hotell Norr",
+        description: 
+          "Fartfylld aktivitet för aktiva singlar 35 år och uppåt som gillar att vara ute i naturen.
+
+          Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.
+
+          Sen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika "lära känna varandra" frågor.
+
+          Kom och var med på en roligt stund i en somrig miljö. 
+          
+          Kläder efter väder, vi kör vid både sol och regn :)
+
+          Till Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Annumark.
+
+          Anumark 50
+          E4, Norra infart
+          905 95 Umeå
+
+          Är det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.
+          ",
+        price: "225 kr",
         image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
         isOnSale: true
