@@ -3,7 +3,7 @@ const AboutSection = () => {
   return (
     <div className="bg-white py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <h2 className="section-title">Vi är Lovely</h2>
+        <h2 className="section-title">Vi är Lovety</h2>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2">
             <p className="mb-4">
