@@ -138,7 +138,7 @@ class GoogleSheetService {
         description: "Ta en paus i vardagen och träffa nya intressanta människor. \n\n Vi ses på GPs där en Lovety värd möter upp.\n\nFörst äter vi en god lunch och sen promennerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill du endast vara med på promenaden går det bra att möta upp till den. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (exkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "350 kr",
         earlyBirdPrice: "325 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 17 juni",
+        earlyBirdUntil: "Early Bird pris - gäller till 14 juni",
         image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
         isOnSale: true
@@ -153,7 +153,7 @@ class GoogleSheetService {
         description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "175 kr",
         earlyBirdPrice: "150 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 17 juni",
+        earlyBirdUntil: "Early Bird pris - gäller till 14 juni",
         image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
         isOnSale: true
