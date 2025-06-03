@@ -4,7 +4,7 @@ const AboutSection = () => {
     <div className="bg-white py-12 px-4 md:px-8">
       <div className="container mx-auto">
         <h2 className="section-title">Vi är Lovety</h2>
-        <div className="flex flex-col md:flex-row gap-8">
+        <div className="flex flex-col md:flex-row gap-8 items-start">
           <div className="md:w-1/2">
             <p className="mb-4">
               Lovety är en mötesplats för singlar som inte bara vill träffa någon, utan vill träffa den rätta.

@@ -11,7 +11,7 @@ const Header = () => {
           <img
             src="/lovable-uploads/4504236e-e3db-42f4-a648-cefa3ce4925b.png"
             alt="Lovety Logo"
-            className="h-16 mr-3"
+            className="h-24 mr-3"
           />
         </div>
         <div className="flex items-center space-x-2">

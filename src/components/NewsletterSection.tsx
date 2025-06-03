@@ -23,23 +23,16 @@ const NewsletterSection = () => {
 
     setIsSubmitting(true);
     
-    // Google Sheet Web App URL - Replace with your deployed Google Apps Script Web App URL
-    const sheetUrl = "YOUR_GOOGLE_SHEET_WEB_APP_URL";
-    
     try {
-      // Using no-cors mode as Google Apps Script doesn't support CORS by default
-      await fetch(sheetUrl, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          timestamp: new Date().toISOString(),
-        }),
-      });
+      // Send email to info@singelaktiviteter.se
+      const emailData = {
+        to: "info@singelaktiviteter.se",
+        subject: "Newsletter subscription",
+        body: `Ny prenumeration på nyhetsbrev:\n\nNamn: ${name}\nE-post: ${email}\nDatum: ${new Date().toLocaleString()}`
+      };
+      
+      // In a real implementation, this would be sent to a backend service
+      console.log("Newsletter subscription:", emailData);
       
       // Clear form and show success message
       setName("");

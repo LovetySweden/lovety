@@ -13,6 +13,7 @@ export type Activity = {
   earlyBirdUntil?: string;
   isFull?: boolean;
   isOnSale?: boolean;
+  activityHeading?: string;
 };
 
 export type InterestRegistration = {

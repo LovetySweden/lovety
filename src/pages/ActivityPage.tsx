@@ -272,7 +272,7 @@ const ActivityPage = () => {
             </div>
             
             <div className="p-6 md:p-8">
-              <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4">{activity.title}</h1>
+              <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4" style={{ color: '#C0392B' }}>{activity.title}</h1>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div>
@@ -320,7 +320,7 @@ const ActivityPage = () => {
               </div>
               
               <div className="mb-8">
-                <h3 className="text-lg font-medium mb-2">Om aktiviteten</h3>
+                <h3 className="text-lg font-medium mb-2">{activity.activityHeading || "Om aktiviteten"}</h3>
                 <p className="text-lovely-slate whitespace-pre-line">{activity.description}</p>
               </div>
               
