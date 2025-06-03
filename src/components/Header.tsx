@@ -9,9 +9,9 @@ const Header = () => {
       <div className="container mx-auto flex justify-between items-start py-4 px-4 md:px-8">
         <div className="flex items-center">
           <img
-            src="/lovable-uploads/e9c116e9-57ac-444d-8203-0ff5a6eeaf66.png"
+            src="/lovable-uploads/4504236e-e3db-42f4-a648-cefa3ce4925b.png"
             alt="Lovety Logo"
-            className="h-32 mr-3"
+            className="h-16 mr-3"
           />
         </div>
         <div className="flex items-center space-x-2">

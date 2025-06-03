@@ -6,8 +6,11 @@ export type Activity = {
   date: string;
   time: string;
   location: string;
+  address?: string;
   description: string;
   price: string;
+  earlyBirdPrice?: string;
+  earlyBirdUntil?: string;
   isFull?: boolean;
   isOnSale?: boolean;
 };

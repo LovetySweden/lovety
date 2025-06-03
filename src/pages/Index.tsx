@@ -2,11 +2,11 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import ActivitiesSection from "@/components/ActivitiesSection";
+import FunTogether from "@/components/FunTogether";
 import Vote from "@/components/Vote.tsx";
 import SuggestActivity from "@/components/SuggestActivity";
 import AboutSection from "@/components/AboutSection";
 import NewsletterSection from "@/components/NewsletterSection";
-import PromotionsSection from "@/components/PromotionsSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
@@ -15,14 +15,13 @@ const Index = () => {
       <Header />
       <HeroSection />
       <ActivitiesSection />
-      { /* <FunTogether /> */ }
+      <FunTogether />
       <Vote />
       <SuggestActivity />
       <AboutSection />
       <div id="newsletter">
         <NewsletterSection />
       </div>
-      <PromotionsSection />
       <Footer />
     </div>
   );

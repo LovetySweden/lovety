@@ -24,20 +24,10 @@ const AboutSection = () => {
               Vi vill skapa möjligheter för alla att hitta och uppleva kärleken. På riktigt. 
             </p>
           </div>
-          <div className="md:w-1/2 grid grid-cols-2 gap-4">
+          <div className="md:w-1/2">
             <img 
-              src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" 
-              alt="Lovely activity" 
-              className="rounded-lg w-full h-auto object-cover"
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1519389950473-47ba0277781c" 
-              alt="Lovely activity" 
-              className="rounded-lg w-full h-auto object-cover"
-            />
-            <img 
-              src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81" 
-              alt="Lovely activity" 
+              src="/lovable-uploads/339647f4-212f-44e5-bbe3-4d7ec312c82e.png" 
+              alt="Jenny from Lovety" 
               className="rounded-lg w-full h-auto object-cover"
             />
           </div>

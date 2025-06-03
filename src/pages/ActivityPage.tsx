@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { googleSheetService, ActivityDetails, ParticipantField } from '@/services/GoogleSheetService';
 import { Card, CardContent } from "@/components/ui/card";
+import InterestRegistration from '@/components/InterestRegistration';
+import { MapPin } from 'lucide-react';
 
 const ActivityPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -52,6 +54,18 @@ const ActivityPage = () => {
     
     fetchActivity();
   }, [activityId]);
+
+  // Check if early bird price is still valid
+  const isEarlyBirdValid = (earlyBirdUntil: string) => {
+    const today = new Date();
+    const untilDate = new Date(earlyBirdUntil);
+    return today <= untilDate;
+  };
+
+  // Create Google Maps link
+  const getGoogleMapsLink = (address: string) => {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+  };
   
   if (isLoading) {
     return (
@@ -270,17 +284,44 @@ const ActivityPage = () => {
                 <div>
                   <h3 className="text-lg font-medium mb-2">Plats</h3>
                   <p className="text-lovely-slate">{activity.location}</p>
+                  {activity.address && (
+                    <a 
+                      href={getGoogleMapsLink(activity.address)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center text-lovely-red hover:underline mt-1"
+                    >
+                      <MapPin size={16} className="mr-1" />
+                      {activity.address}
+                    </a>
+                  )}
                 </div>
                 
                 <div>
                   <h3 className="text-lg font-medium mb-2">Pris</h3>
-                  <p className="text-lovely-slate">{activity.price}</p>
+                  {activity.earlyBirdPrice && activity.earlyBirdUntil ? (
+                    <div>
+                      {isEarlyBirdValid(activity.earlyBirdUntil) ? (
+                        <>
+                          <p className="text-lovely-red font-medium">{activity.earlyBirdPrice} (t.o.m. {activity.earlyBirdUntil})</p>
+                          <p className="text-lovely-slate">Ordinarie: {activity.price}</p>
+                        </>
+                      ) : (
+                        <>
+                          <p className="text-lovely-slate line-through">{activity.earlyBirdPrice} (t.o.m. {activity.earlyBirdUntil})</p>
+                          <p className="text-lovely-slate">{activity.price}</p>
+                        </>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-lovely-slate">{activity.price}</p>
+                  )}
                 </div>
               </div>
               
               <div className="mb-8">
                 <h3 className="text-lg font-medium mb-2">Om aktiviteten</h3>
-                <p className="text-lovely-slate">{activity.description}</p>
+                <p className="text-lovely-slate whitespace-pre-line">{activity.description}</p>
               </div>
               
               {activity.isFull ? (
@@ -335,7 +376,7 @@ const ActivityPage = () => {
                             type="submit" 
                             className="bg-lovely-red text-white"
                           >
-                            Betala {activity.price}
+                            Betala {activity.earlyBirdPrice && activity.earlyBirdUntil && isEarlyBirdValid(activity.earlyBirdUntil) ? activity.earlyBirdPrice : activity.price}
                           </Button>
                           <Button 
                             type="button"
@@ -356,53 +397,27 @@ const ActivityPage = () => {
                     Köp biljett
                   </Button>
                 )
-              ) : showInterestForm ? (
-                <div className="max-w-md border rounded-lg p-6">
-                  <h3 className="text-lg font-medium mb-4">Registrera intresse</h3>
-                  <form onSubmit={handleRegisterInterest} className="space-y-4">
-                    <div>
-                      <label htmlFor="name" className="block mb-1 text-sm font-medium">Namn</label>
-                      <Input 
-                        id="name" 
-                        value={name} 
-                        onChange={(e) => setName(e.target.value)} 
-                        required 
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block mb-1 text-sm font-medium">E-post</label>
-                      <Input 
-                        id="email" 
-                        type="email" 
-                        value={email} 
-                        onChange={(e) => setEmail(e.target.value)} 
-                        required 
-                      />
-                    </div>
-                    <div className="flex gap-2">
-                      <Button 
-                        type="submit" 
-                        className="bg-lovely-red text-white"
-                      >
-                        Skicka
-                      </Button>
-                      <Button 
-                        type="button"
-                        variant="outline" 
-                        onClick={() => setShowInterestForm(false)}
-                      >
-                        Avbryt
-                      </Button>
-                    </div>
-                  </form>
-                </div>
               ) : (
-                <Button 
-                  className="bg-lovely-coral text-white px-8 py-3 text-lg"
-                  onClick={() => setShowInterestForm(true)}
-                >
-                  Registrera intresse
-                </Button>
+                <div>
+                  {showInterestForm ? (
+                    <InterestRegistration 
+                      activityTitle={activity.title}
+                      onClose={() => setShowInterestForm(false)}
+                    />
+                  ) : (
+                    <div>
+                      <Button 
+                        className="bg-lovely-coral text-white px-8 py-3 text-lg"
+                        onClick={() => setShowInterestForm(true)}
+                      >
+                        Anmäl intresse
+                      </Button>
+                      <p className="italic text-lovely-slate mt-2 text-sm">
+                        du får ett meddelande när biljetterna släpps och kan vara först till kvarn.
+                      </p>
+                    </div>
+                  )}
+                </div>
               )}
             </div>
           </div>
