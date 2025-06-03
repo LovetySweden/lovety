@@ -123,7 +123,7 @@ class GoogleSheetService {
 
           Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.
 
-          Sen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika "lära känna varandra" frågor.
+          Sen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.
 
           Kom och var med på en roligt stund i en somrig miljö. 
           
