@@ -43,7 +43,7 @@ const ActivityCard = ({
           } w-full hover:opacity-90`}
           disabled={isFull}
         >
-          {isFull ? 'Fullbokad' : isOnSale ? 'Köp biljett' : 'Anmäl intresse'}
+          {isFull ? 'Fullbokad' : 'Mer information'}
         </Button>
       </Link>
     </div>
