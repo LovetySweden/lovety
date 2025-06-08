@@ -1,3 +1,4 @@
+
 import { Activity } from "@/types/activities";
 
 export interface VoteActivity {
@@ -122,11 +123,10 @@ class GoogleSheetService {
           "Fartfylld aktivitet för aktiva singlar 35 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Annumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "250 kr",
         earlyBirdPrice: "225 kr",
-        earlyBirdUntil: "2024-06-11",
-        image: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&h=300&fit=crop",
+        earlyBirdUntil: "Early Bird pris - gäller till 11 juni",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
-        isOnSale: false,
-        activityHeading: "Om fotbollsgolfen"
+        isOnSale: false
       },
       {
         id: 2,
@@ -138,11 +138,10 @@ class GoogleSheetService {
         description: "Ta en paus i vardagen och träffa nya intressanta människor. \n\n Vi ses på GPs där en Lovety värd möter upp.\n\nFörst äter vi en god lunch och sen promennerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill du endast vara med på promenaden går det bra att möta upp till den. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (exkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "350 kr",
         earlyBirdPrice: "325 kr",
-        earlyBirdUntil: "2024-06-14",
-        image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=300&fit=crop",
+        earlyBirdUntil: "Early Bird pris - gäller till 14 juni",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
-        isOnSale: true,
-        activityHeading: "Om lunchpromenaden"
+        isOnSale: true
       },
       {
         id: 3,
@@ -154,11 +153,10 @@ class GoogleSheetService {
         description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "175 kr",
         earlyBirdPrice: "150 kr",
-        earlyBirdUntil: "2024-06-14",
-        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
+        earlyBirdUntil: "Early Bird pris - gäller till 14 juni",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
-        isOnSale: true,
-        activityHeading: "Om promenaden"
+        isOnSale: true
       },
       {
         id: 4,
@@ -170,11 +168,10 @@ class GoogleSheetService {
         description: "Ta en paus i vardagen och träffa nya intressanta människor. \n\n Vi ses på GPs där en Lovety värd möter upp.\n\nFörst äter vi en god lunch och sen promennerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 50 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill du endast vara med på promenaden går det bra att möta upp till den. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 50+ (exkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "350 kr",
         earlyBirdPrice: "325 kr",
-        earlyBirdUntil: "2024-06-20",
-        image: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=300&fit=crop",
+        earlyBirdUntil: "Early Bird pris - gäller till 20 juni",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
-        isOnSale: true,
-        activityHeading: "Om aktiviteten"
+        isOnSale: true
       },
       {
         id: 5,
@@ -186,11 +183,10 @@ class GoogleSheetService {
         description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 50 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 50+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "175 kr",
         earlyBirdPrice: "150 kr",
-        earlyBirdUntil: "2024-06-20",
-        image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=300&fit=crop",
+        earlyBirdUntil: "Early Bird pris - gäller till 20 juni",
+        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
         isFull: false,
-        isOnSale: true,
-        activityHeading: "Om aktiviteten"
+        isOnSale: true
       },
       {
         id: 6,
@@ -202,11 +198,10 @@ class GoogleSheetService {
         description: "Lär dig laga italienska rätter med lokala ingredienser.",
         price: "395 kr",
         earlyBirdPrice: "375 kr",
-        earlyBirdUntil: "2024-06-08",
-        image: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?w=400&h=300&fit=crop",
+        earlyBirdUntil: "Early Bird pris - gäller till 8 juni",
+        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d",
         isFull: true,
-        isOnSale: true,
-        activityHeading: "Om brunchen"
+        isOnSale: true
       }
     ];
   }
