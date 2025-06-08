@@ -126,7 +126,7 @@ class GoogleSheetService {
         earlyBirdPrice: "225 kr",
         earlyBirdUntil: "Early Bird pris - gäller till 11 juni",
         earlyBirdExpiryDate: "2025-06-07",
-        externalPaymentLink: "https://example.com/payment/activity-1",
+        externalPaymentLink: "https://fotbollsgolf35.confetti.events/signup",
         image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d",
         isFull: false,
         isOnSale: false
