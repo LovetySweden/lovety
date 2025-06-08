@@ -123,7 +123,7 @@ class GoogleSheetService {
         price: "250 kr",
         earlyBirdPrice: "225 kr",
         earlyBirdUntil: "2024-06-11",
-        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
+        image: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=400&h=300&fit=crop",
         isFull: false,
         isOnSale: false,
         activityHeading: "Om fotbollsgolfen"
@@ -139,7 +139,7 @@ class GoogleSheetService {
         price: "350 kr",
         earlyBirdPrice: "325 kr",
         earlyBirdUntil: "2024-06-14",
-        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
+        image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=300&fit=crop",
         isFull: false,
         isOnSale: true,
         activityHeading: "Om lunchpromenaden"
@@ -155,7 +155,7 @@ class GoogleSheetService {
         price: "175 kr",
         earlyBirdPrice: "150 kr",
         earlyBirdUntil: "2024-06-14",
-        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
+        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop",
         isFull: false,
         isOnSale: true,
         activityHeading: "Om promenaden"
@@ -171,7 +171,7 @@ class GoogleSheetService {
         price: "350 kr",
         earlyBirdPrice: "325 kr",
         earlyBirdUntil: "2024-06-20",
-        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
+        image: "https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&h=300&fit=crop",
         isFull: false,
         isOnSale: true,
         activityHeading: "Om aktiviteten"
@@ -187,7 +187,7 @@ class GoogleSheetService {
         price: "175 kr",
         earlyBirdPrice: "150 kr",
         earlyBirdUntil: "2024-06-20",
-        image: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3",
+        image: "https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=400&h=300&fit=crop",
         isFull: false,
         isOnSale: true,
         activityHeading: "Om aktiviteten"
@@ -203,7 +203,7 @@ class GoogleSheetService {
         price: "395 kr",
         earlyBirdPrice: "375 kr",
         earlyBirdUntil: "2024-06-08",
-        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d",
+        image: "https://images.unsplash.com/photo-1544427920-c49ccfb85579?w=400&h=300&fit=crop",
         isFull: true,
         isOnSale: true,
         activityHeading: "Om brunchen"
