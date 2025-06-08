@@ -50,6 +50,15 @@ const ActivityPage = () => {
     return today <= expiryDate;
   };
 
+  // Generate early bird display text from expiry date
+  const getEarlyBirdDisplayText = (earlyBirdExpiryDate: string) => {
+    const expiryDate = new Date(earlyBirdExpiryDate);
+    const day = expiryDate.getDate();
+    const months = ['januari', 'februari', 'mars', 'april', 'maj', 'juni', 'juli', 'augusti', 'september', 'oktober', 'november', 'december'];
+    const month = months[expiryDate.getMonth()];
+    return `Early Bird pris - gäller till ${day} ${month}`;
+  };
+
   // Create Google Maps link
   const getGoogleMapsLink = (address: string) => {
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
@@ -143,13 +152,17 @@ const ActivityPage = () => {
                     <div>
                       {isEarlyBirdValid(activity.earlyBirdExpiryDate) ? (
                         <>
-                          <p className="font-medium" style={{ color: '#C0392B' }}>{activity.earlyBirdPrice} {activity.earlyBirdUntil}</p>
+                          <p className="font-medium" style={{ color: '#C0392B' }}>
+                            {activity.earlyBirdPrice} {getEarlyBirdDisplayText(activity.earlyBirdExpiryDate)}
+                          </p>
                           <p className="text-lovely-slate">Ordinarie: {activity.price}</p>
                         </>
                       ) : (
                         <>
                           <p className="font-medium" style={{ color: '#C0392B' }}>{activity.price}</p>
-                          <p className="text-lovely-slate line-through">{activity.earlyBirdPrice} {activity.earlyBirdUntil}</p>
+                          <p className="text-lovely-slate line-through">
+                            {activity.earlyBirdPrice} {getEarlyBirdDisplayText(activity.earlyBirdExpiryDate)}
+                          </p>
                         </>
                       )}
                     </div>
