@@ -11,6 +11,8 @@ export type Activity = {
   price: string;
   earlyBirdPrice?: string;
   earlyBirdUntil?: string;
+  earlyBirdExpiryDate?: string; // ISO date string for when early bird expires
+  externalPaymentLink?: string; // External payment link
   isFull?: boolean;
   isOnSale?: boolean;
   activityHeading?: string;

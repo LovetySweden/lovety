@@ -2,15 +2,10 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useToast } from "@/components/ui/use-toast";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { Label } from "@/components/ui/label";
-import { Checkbox } from "@/components/ui/checkbox";
-import { googleSheetService, ActivityDetails, ParticipantField } from '@/services/GoogleSheetService';
-import { Card, CardContent } from "@/components/ui/card";
+import { googleSheetService, ActivityDetails } from '@/services/GoogleSheetService';
 import InterestRegistration from '@/components/InterestRegistration';
 import { MapPin } from 'lucide-react';
 
@@ -25,12 +20,6 @@ const ActivityPage = () => {
   const [error, setError] = useState<string | null>(null);
   
   const [showInterestForm, setShowInterestForm] = useState(false);
-  const [showPaymentForm, setShowPaymentForm] = useState(false);
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState<'card' | 'swish'>('card');
-  const [formValues, setFormValues] = useState<Record<string, string>>({});
-  const [termsAccepted, setTermsAccepted] = useState(false);
   
   // Fetch activity details
   useEffect(() => {
@@ -55,11 +44,11 @@ const ActivityPage = () => {
     fetchActivity();
   }, [activityId]);
 
-  // Check if early bird price is still valid
-  const isEarlyBirdValid = (earlyBirdUntil: string) => {
+  // Check if early bird price is still valid using the expiry date
+  const isEarlyBirdValid = (earlyBirdExpiryDate: string) => {
     const today = new Date();
-    const untilDate = new Date(earlyBirdUntil);
-    return today <= untilDate;
+    const expiryDate = new Date(earlyBirdExpiryDate);
+    return today <= expiryDate;
   };
 
   // Create Google Maps link
@@ -97,162 +86,14 @@ const ActivityPage = () => {
   }
 
   const handleBuyTicket = () => {
-    setShowPaymentForm(true);
-  };
-
-  const handleRegisterInterest = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!name || !email) {
+    if (activity.externalPaymentLink) {
+      window.open(activity.externalPaymentLink, '_blank');
+    } else {
       toast({
         title: "Fel",
-        description: "Vänligen fyll i alla obligatoriska fält",
+        description: "Betalningslänk saknas för denna aktivitet.",
         variant: "destructive"
       });
-      return;
-    }
-    
-    try {
-      const success = await googleSheetService.registerInterest(activityId, name, email);
-      
-      if (success) {
-        toast({
-          title: "Intresse registrerat",
-          description: "Vi meddelar dig när aktiviteten släpps för bokning.",
-        });
-        
-        // Reset form
-        setName("");
-        setEmail("");
-        setShowInterestForm(false);
-      } else {
-        throw new Error("Failed to register interest");
-      }
-    } catch (error) {
-      console.error("Error registering interest:", error);
-      toast({
-        title: "Fel",
-        description: "Kunde inte registrera ditt intresse. Försök igen senare.",
-        variant: "destructive"
-      });
-    }
-  };
-
-  const handlePaymentSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Validate form fields
-    const requiredFields = activity.participantFields.filter(field => field.required);
-    for (const field of requiredFields) {
-      if (!formValues[field.id]) {
-        toast({
-          title: "Fel",
-          description: `Vänligen fyll i fältet: ${field.name}`,
-          variant: "destructive"
-        });
-        return;
-      }
-    }
-    
-    if (!termsAccepted) {
-      toast({
-        title: "Fel",
-        description: "Du måste acceptera villkoren för att fortsätta",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    // Process payment
-    try {
-      const success = await googleSheetService.purchaseTicket(activityId, paymentMethod, formValues);
-      
-      if (success) {
-        // In a real implementation, you would redirect to a payment gateway
-        toast({
-          title: "Betalning initierad",
-          description: "Du kommer nu att omdirigeras till betalningssidan.",
-        });
-        
-        // Simulate redirect to payment page
-        setTimeout(() => {
-          toast({
-            title: "Betalning godkänd",
-            description: "Din bokning har bekräftats!",
-          });
-          setShowPaymentForm(false);
-          setFormValues({});
-          setTermsAccepted(false);
-        }, 2000);
-      } else {
-        throw new Error("Failed to process payment");
-      }
-    } catch (error) {
-      console.error("Error processing payment:", error);
-      toast({
-        title: "Betalningsfel",
-        description: "Något gick fel vid betalningen. Försök igen senare.",
-        variant: "destructive"
-      });
-    }
-  };
-  
-  const renderFormField = (field: ParticipantField) => {
-    switch (field.type) {
-      case 'text':
-      case 'email':
-      case 'phone':
-        return (
-          <div key={field.id} className="mb-4">
-            <Label htmlFor={field.id} className="block mb-1 text-sm font-medium">
-              {field.name} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <Input 
-              id={field.id}
-              type={field.type === 'email' ? 'email' : 'text'} 
-              value={formValues[field.id] || ''}
-              onChange={(e) => setFormValues({...formValues, [field.id]: e.target.value})}
-              required={field.required}
-            />
-          </div>
-        );
-      case 'select':
-        return (
-          <div key={field.id} className="mb-4">
-            <Label htmlFor={field.id} className="block mb-1 text-sm font-medium">
-              {field.name} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-            <select 
-              id={field.id}
-              className="w-full border rounded-md p-2"
-              value={formValues[field.id] || ''}
-              onChange={(e) => setFormValues({...formValues, [field.id]: e.target.value})}
-              required={field.required}
-            >
-              <option value="">Välj ett alternativ</option>
-              {field.options?.map(option => (
-                <option key={option} value={option}>{option}</option>
-              ))}
-            </select>
-          </div>
-        );
-      case 'checkbox':
-        return (
-          <div key={field.id} className="flex items-center mb-4">
-            <Checkbox 
-              id={field.id}
-              checked={formValues[field.id] === 'true'}
-              onCheckedChange={(checked) => 
-                setFormValues({...formValues, [field.id]: checked ? 'true' : 'false'})
-              }
-            />
-            <Label htmlFor={field.id} className="ml-2 text-sm">
-              {field.name} {field.required && <span className="text-red-500">*</span>}
-            </Label>
-          </div>
-        );
-      default:
-        return null;
     }
   };
 
@@ -299,16 +140,18 @@ const ActivityPage = () => {
                 
                 <div>
                   <h3 className="text-lg font-medium mb-2">Pris</h3>
-                  {activity.earlyBirdPrice && activity.earlyBirdUntil ? (
+                  {activity.earlyBirdPrice && activity.earlyBirdExpiryDate ? (
                     <div>
-                      {isEarlyBirdValid(activity.earlyBirdUntil) ? (
+                      {isEarlyBirdValid(activity.earlyBirdExpiryDate) ? (
                         <>
-                          <p className="text-lovely-red font-medium">{activity.earlyBirdPrice} (t.o.m. {activity.earlyBirdUntil})</p>
+                          <p className="text-lovely-red font-medium">{activity.earlyBirdPrice}</p>
+                          <p className="text-lovely-slate text-sm">{activity.earlyBirdUntil}</p>
                           <p className="text-lovely-slate">Ordinarie: {activity.price}</p>
                         </>
                       ) : (
                         <>
-                          <p className="text-lovely-slate line-through">{activity.earlyBirdPrice} (t.o.m. {activity.earlyBirdUntil})</p>
+                          <p className="text-lovely-slate line-through">{activity.earlyBirdPrice}</p>
+                          <p className="text-lovely-slate text-sm line-through">{activity.earlyBirdUntil}</p>
                           <p className="text-lovely-slate">{activity.price}</p>
                         </>
                       )}
@@ -332,71 +175,12 @@ const ActivityPage = () => {
                   Fullbokad
                 </Button>
               ) : activity.isOnSale ? (
-                showPaymentForm ? (
-                  <Card className="mt-6 max-w-2xl">
-                    <CardContent className="pt-6">
-                      <h3 className="text-xl font-medium mb-4">Boka biljett</h3>
-                      <form onSubmit={handlePaymentSubmit} className="space-y-4">
-                        {/* Participant information fields */}
-                        {activity.participantFields.map(renderFormField)}
-                        
-                        {/* Payment method selection */}
-                        <div className="mb-6">
-                          <h4 className="text-lg font-medium mb-2">Betalningsmetod</h4>
-                          <RadioGroup 
-                            value={paymentMethod} 
-                            onValueChange={(value) => setPaymentMethod(value as 'card' | 'swish')}
-                            className="flex flex-col space-y-2"
-                          >
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="card" id="card" />
-                              <Label htmlFor="card">Kortbetalning</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                              <RadioGroupItem value="swish" id="swish" />
-                              <Label htmlFor="swish">Swish</Label>
-                            </div>
-                          </RadioGroup>
-                        </div>
-                        
-                        {/* Terms and conditions */}
-                        <div className="flex items-start space-x-2">
-                          <Checkbox 
-                            id="terms" 
-                            checked={termsAccepted}
-                            onCheckedChange={(checked) => setTermsAccepted(!!checked)} 
-                          />
-                          <Label htmlFor="terms" className="text-sm">
-                            Jag accepterar <a href="#" className="text-lovely-red underline">villkoren</a> för denna aktivitet
-                          </Label>
-                        </div>
-                        
-                        <div className="flex gap-2">
-                          <Button 
-                            type="submit" 
-                            className="bg-lovely-red text-white"
-                          >
-                            Betala {activity.earlyBirdPrice && activity.earlyBirdUntil && isEarlyBirdValid(activity.earlyBirdUntil) ? activity.earlyBirdPrice : activity.price}
-                          </Button>
-                          <Button 
-                            type="button"
-                            variant="outline" 
-                            onClick={() => setShowPaymentForm(false)}
-                          >
-                            Avbryt
-                          </Button>
-                        </div>
-                      </form>
-                    </CardContent>
-                  </Card>
-                ) : (
-                  <Button 
-                    className="bg-lovely-red text-white px-8 py-3 text-lg"
-                    onClick={handleBuyTicket}
-                  >
-                    Köp biljett
-                  </Button>
-                )
+                <Button 
+                  className="bg-lovely-red text-white px-8 py-3 text-lg"
+                  onClick={handleBuyTicket}
+                >
+                  Köp biljett
+                </Button>
               ) : (
                 <div>
                   {showInterestForm ? (
