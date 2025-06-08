@@ -119,6 +119,7 @@ class GoogleSheetService {
         time: "18:30-20:30",
         location: "Hotell Norr",
         address: "Annumark 50, 905 95 Umeå",
+        activityHeading:"test",
         description: 
           "Fartfylld aktivitet för aktiva singlar 35 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Annumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "250 kr",
@@ -135,6 +136,7 @@ class GoogleSheetService {
         time: "11:30-13:30",
         location: "GPs",
         address: "Skolgatan 62, Umeå",
+        activityHeading:"hej hopp",
         description: "Ta en paus i vardagen och träffa nya intressanta människor. \n\n Vi ses på GPs där en Lovety värd möter upp.\n\nFörst äter vi en god lunch och sen promennerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill du endast vara med på promenaden går det bra att möta upp till den. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (exkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "350 kr",
         earlyBirdPrice: "325 kr",
@@ -150,6 +152,7 @@ class GoogleSheetService {
         time: "12:30-13:30",
         location: "GPs",
         address: "Skolgatan 62, Umeå",
+        activityHeading:"bästa rubriken någonsin",
         description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "175 kr",
         earlyBirdPrice: "150 kr",
