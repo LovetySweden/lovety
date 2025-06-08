@@ -1,4 +1,3 @@
-
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -144,20 +143,18 @@ const ActivityPage = () => {
                     <div>
                       {isEarlyBirdValid(activity.earlyBirdExpiryDate) ? (
                         <>
-                          <p className="text-lovely-red font-medium">{activity.earlyBirdPrice}</p>
-                          <p className="text-lovely-slate text-sm">{activity.earlyBirdUntil}</p>
+                          <p className="font-medium" style={{ color: '#C0392B' }}>{activity.earlyBirdPrice} {activity.earlyBirdUntil}</p>
                           <p className="text-lovely-slate">Ordinarie: {activity.price}</p>
                         </>
                       ) : (
                         <>
-                          <p className="text-lovely-slate line-through">{activity.earlyBirdPrice}</p>
-                          <p className="text-lovely-slate text-sm line-through">{activity.earlyBirdUntil}</p>
-                          <p className="text-lovely-slate">{activity.price}</p>
+                          <p className="font-medium" style={{ color: '#C0392B' }}>{activity.price}</p>
+                          <p className="text-lovely-slate line-through">{activity.earlyBirdPrice} {activity.earlyBirdUntil}</p>
                         </>
                       )}
                     </div>
                   ) : (
-                    <p className="text-lovely-slate">{activity.price}</p>
+                    <p className="font-medium" style={{ color: '#C0392B' }}>{activity.price}</p>
                   )}
                 </div>
               </div>

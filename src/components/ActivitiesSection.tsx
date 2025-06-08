@@ -5,7 +5,6 @@ import { Button } from "./ui/button";
 import { Activity } from "@/types/activities";
 import { useToast } from "./ui/use-toast";
 import { googleSheetService } from "@/services/GoogleSheetService";
-import { Link as ScrollLink } from "react-scroll";
 
 const ActivitiesSection = () => {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -45,20 +44,11 @@ const ActivitiesSection = () => {
   }, []);
 
   return (
-    <div className="bg-lovely-cream py-12 px-4 md:px-8">
+    <div className="py-12 px-4 md:px-8">
       <div className="container mx-auto">
         <h2 className="section-title">Aktiviteter</h2>
         <p className="mb-6">
-          Delta i någon av våra populära aktiviteter och träffa andra singlar med liknande intressen. 
-          Du kan också{" "}
-          <ScrollLink to="vote" smooth={true} duration={500} className="text-lovely-red hover:underline cursor-pointer">
-            rösta på kommande aktiviteter
-          </ScrollLink>
-          {" "}eller{" "}
-          <ScrollLink to="suggest-activity" smooth={true} duration={500} className="text-lovely-red hover:underline cursor-pointer">
-            föreslå en aktivitet
-          </ScrollLink>
-          .
+          Delta i någon av våra populära aktiviteter och träffa andra singlar med liknande intressen.
         </p>
 
         {isLoading ? (

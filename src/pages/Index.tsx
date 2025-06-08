@@ -13,19 +13,19 @@ const Index = () => {
     <div className="min-h-screen flex flex-col">
       <Header />
       <HeroSection />
-      <div className="bg-white">
+      <div style={{ backgroundColor: '#F5EFE6' }}>
         <ActivitiesSection />
       </div>
-      <div className="bg-lovely-beige/30">
+      <div className="bg-white">
         <FunTogether />
       </div>
-      <div className="bg-white">
+      <div style={{ backgroundColor: '#F5EFE6' }}>
         <SuggestActivity />
       </div>
-      <div className="bg-lovely-beige/30">
+      <div className="bg-white">
         <AboutSection />
       </div>
-      <div id="newsletter" className="bg-white">
+      <div style={{ backgroundColor: '#F5EFE6' }}>
         <NewsletterSection />
       </div>
       <Footer />

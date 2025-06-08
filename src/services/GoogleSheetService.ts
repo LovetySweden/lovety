@@ -1,4 +1,3 @@
-
 import { Activity } from "@/types/activities";
 
 export interface VoteActivity {
@@ -30,6 +29,18 @@ class GoogleSheetService {
     this.activitiesUrl = import.meta.env.VITE_GOOGLE_ACTIVITIES_SHEET_URL || "";
     this.votesUrl = import.meta.env.VITE_GOOGLE_VOTES_SHEET_URL || "";
     this.participantsUrl = import.meta.env.VITE_GOOGLE_PARTICIPANTS_SHEET_URL || "";
+  }
+
+  // Helper function to format date for early bird display
+  private formatEarlyBirdDate(dateString: string): string {
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const months = [
+      'januari', 'februari', 'mars', 'april', 'maj', 'juni',
+      'juli', 'augusti', 'september', 'oktober', 'november', 'december'
+    ];
+    const month = months[date.getMonth()];
+    return `Early Bird pris - gäller till ${day} ${month}`;
   }
 
   // Set Google Sheet URLs
@@ -111,7 +122,7 @@ class GoogleSheetService {
 
   // Mock activities data for development
   private getMockActivities(): Activity[] {
-    return [
+    const activities = [
       {
         id: 1,
         title: "Fotbollsgolf, 35+",
@@ -124,7 +135,6 @@ class GoogleSheetService {
           "Fartfylld aktivitet för aktiva singlar 35 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Annumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "250 kr",
         earlyBirdPrice: "225 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 11 juni",
         earlyBirdExpiryDate: "2025-06-07",
         externalPaymentLink: "https://fotbollsgolf35.confetti.events/signup",
         image: "https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d",
@@ -142,7 +152,6 @@ class GoogleSheetService {
         description: "Ta en paus i vardagen och träffa nya intressanta människor. \n\n Vi ses på GPs där en Lovety värd möter upp.\n\nFörst äter vi en god lunch och sen promennerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill du endast vara med på promenaden går det bra att möta upp till den. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (exkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "350 kr",
         earlyBirdPrice: "325 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 14 juni",
         earlyBirdExpiryDate: "2025-06-14",
         externalPaymentLink: "https://example.com/payment/activity-2",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
@@ -160,7 +169,6 @@ class GoogleSheetService {
         description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "175 kr",
         earlyBirdPrice: "150 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 14 juni",
         earlyBirdExpiryDate: "2025-06-14",
         externalPaymentLink: "https://example.com/payment/activity-3",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
@@ -178,7 +186,6 @@ class GoogleSheetService {
         description: "Ta en paus i vardagen och träffa nya intressanta människor. \n\n Vi ses på GPs där en Lovety värd möter upp.\n\nFörst äter vi en god lunch och sen promennerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 50 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill du endast vara med på promenaden går det bra att möta upp till den. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 50+ (exkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "350 kr",
         earlyBirdPrice: "325 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 20 juni",
         earlyBirdExpiryDate: "2025-06-20",
         externalPaymentLink: "https://example.com/payment/activity-4",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
@@ -196,7 +203,6 @@ class GoogleSheetService {
         description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 50 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 50+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nGuilty Pleasure \nE4, Skolgatan 62\nUmeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
         price: "175 kr",
         earlyBirdPrice: "150 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 20 juni",
         earlyBirdExpiryDate: "2025-06-20",
         externalPaymentLink: "https://example.com/payment/activity-5",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
@@ -214,7 +220,6 @@ class GoogleSheetService {
         description: "Lär dig laga italienska rätter med lokala ingredienser.",
         price: "395 kr",
         earlyBirdPrice: "375 kr",
-        earlyBirdUntil: "Early Bird pris - gäller till 8 juni",
         earlyBirdExpiryDate: "2025-06-08",
         externalPaymentLink: "https://example.com/payment/activity-6",
         image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288",
@@ -222,6 +227,12 @@ class GoogleSheetService {
         isOnSale: true
       }
     ];
+
+    // Add the formatted earlyBirdUntil field to each activity
+    return activities.map(activity => ({
+      ...activity,
+      earlyBirdUntil: activity.earlyBirdExpiryDate ? this.formatEarlyBirdDate(activity.earlyBirdExpiryDate) : undefined
+    }));
   }
 
   // Fetch activity details including custom participant fields
