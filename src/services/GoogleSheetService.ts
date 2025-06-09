@@ -223,7 +223,7 @@ class GoogleSheetService {
         earlyBirdPrice: "375 kr",
         earlyBirdExpiryDate: "2025-06-08",
         externalPaymentLink: "https://example.com/payment/activity-6",
-        image: "/lovable-uploads/33f87b78-dce4-4090-9a34-d1660df9b467.png",
+        image: "/lovable-uploads/boule35Landscape.png",
         isFull: true,
         isOnSale: true
       }
