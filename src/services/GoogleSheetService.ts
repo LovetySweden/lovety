@@ -190,7 +190,7 @@ class GoogleSheetService {
         earlyBirdPrice: "250 kr",
         earlyBirdExpiryDate: "2025-06-18",
         externalPaymentLink: "https://example.com/payment/activity-5",
-        image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+        image: "/lovable-uploads/EveningWalk50.png",
         isFull: false,
         isOnSale: true
       },
