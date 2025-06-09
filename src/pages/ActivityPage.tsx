@@ -1,3 +1,4 @@
+
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
@@ -112,7 +113,7 @@ const ActivityPage = () => {
       <div className="flex-1 pt-24 pb-12 px-4 md:px-8 bg-lovely-beige/30">
         <div className="container mx-auto">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="relative h-64 md:h-96">
+            <div className="relative h-80 md:h-[500px]">
               <img 
                 src={activity.image} 
                 alt={activity.title} 
