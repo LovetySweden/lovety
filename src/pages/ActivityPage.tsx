@@ -114,7 +114,7 @@ const ActivityPage = () => {
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="relative h-64 md:h-96">
               <img 
-                src={activity.image} 
+                src={activity.detailImage || activity.image} 
                 alt={activity.title} 
                 className="w-full h-full object-cover"
               />
