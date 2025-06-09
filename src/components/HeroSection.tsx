@@ -3,7 +3,7 @@ const HeroSection = () => {
   return (
     <div className="relative w-full h-[50vh] md:h-[60vh] overflow-hidden">
       <img
-        src="/lovable-uploads/heroBBQ.png"
+        src="/lovable-uploads/heroSummer.png"
         alt="Lovely - Singelaktiviteter i Umeå"
         className="w-full h-full object-cover bg-lovely-beige"
       />
