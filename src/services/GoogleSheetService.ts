@@ -1,3 +1,4 @@
+
 import { Activity } from "@/types/activities";
 
 export interface VoteActivity {
@@ -172,7 +173,6 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-14",
         externalPaymentLink: "https://example.com/payment/activity-3",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
-        detailImage:"",
         isFull: false,
         isOnSale: true
       },
@@ -190,7 +190,6 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-20",
         externalPaymentLink: "https://example.com/payment/activity-4",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
-        detailImage:"",
         isFull: false,
         isOnSale: true
       },
@@ -208,7 +207,6 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-20",
         externalPaymentLink: "https://example.com/payment/activity-5",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
-        detailImage:"",
         isFull: false,
         isOnSale: true
       },
@@ -226,7 +224,6 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-08",
         externalPaymentLink: "https://example.com/payment/activity-6",
         image: "/lovable-uploads/33f87b78-dce4-4090-9a34-d1660df9b467.png",
-        detailImage: "/lovable-uploads/02220f53-72f8-4840-a91f-b11672a86da0.png",
         isFull: true,
         isOnSale: true
       }

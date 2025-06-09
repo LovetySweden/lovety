@@ -2,7 +2,6 @@
 export type Activity = {
   id: number;
   image: string;
-  detailImage?: string; // Optional separate image for detail page
   title: string;
   date: string;
   time: string;
