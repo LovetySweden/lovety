@@ -7,6 +7,7 @@ import SuggestActivity from "@/components/SuggestActivity";
 import AboutSection from "@/components/AboutSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import Footer from "@/components/Footer";
+import {useLocation} from "react-router-dom";
 
 const Index = () => {
   return (
