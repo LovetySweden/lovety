@@ -1,3 +1,4 @@
+
 import { Activity } from "@/types/activities";
 
 export interface VoteActivity {
@@ -222,7 +223,7 @@ class GoogleSheetService {
         earlyBirdPrice: "375 kr",
         earlyBirdExpiryDate: "2025-06-08",
         externalPaymentLink: "https://example.com/payment/activity-6",
-        image: "https://images.unsplash.com/photo-1467003909585-2f8a72700288",
+        image: "/lovable-uploads/33f87b78-dce4-4090-9a34-d1660df9b467.png",
         isFull: true,
         isOnSale: true
       }
