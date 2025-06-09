@@ -172,6 +172,7 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-14",
         externalPaymentLink: "https://example.com/payment/activity-3",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+        detailImage:"",
         isFull: false,
         isOnSale: true
       },
@@ -189,6 +190,7 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-20",
         externalPaymentLink: "https://example.com/payment/activity-4",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+        detailImage:"",
         isFull: false,
         isOnSale: true
       },
@@ -206,6 +208,7 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-20",
         externalPaymentLink: "https://example.com/payment/activity-5",
         image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+        detailImage:"",
         isFull: false,
         isOnSale: true
       },
