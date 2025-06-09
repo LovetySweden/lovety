@@ -39,15 +39,15 @@ const NewsletterSection = () => {
     setIsSubmitting(true);
 
     try {
-      // Send email to info@singelaktiviteter.se
-      const emailData = {
-        to: "info@singelaktiviteter.se",
-        subject: "Newsletter subscription",
-        body: `Ny prenumeration på nyhetsbrev:\n\nNamn: ${name}\nE-post: ${email}\nDatum: ${new Date().toLocaleString()}`
-      };
 
-      // In a real implementation, this would be sent to a backend service
-      console.log("Newsletter subscription:", emailData);
+      const subject = encodeURIComponent("Prenumeration på nyhetsbrev");
+      const body = encodeURIComponent(`
+Namn: ${name}
+Email: ${email}
+    `);
+
+      // Open the user's email client
+      window.location.href = `mailto:info@singelaktiviteter.se?subject=${subject}&body=${body}`;
 
       // Clear form and show success message
       setName("");
