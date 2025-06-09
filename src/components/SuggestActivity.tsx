@@ -10,24 +10,24 @@ const SuggestActivity = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Generate mailto link
     const subject = encodeURIComponent("Förslag på aktivitet");
     const body = encodeURIComponent(`
-      Aktivitet: ${activity}
-      Beskrivning: ${description}
-      Ålder: ${age}
+Aktivitet: ${activity}
+Beskrivning: ${description}
+Ålder: ${age}
     `);
-    
+
     // Open the user's email client
-    window.location.href = `mailto:info@ingelaktiviteter.se?subject=${subject}&body=${body}`;
-    
+    window.location.href = `mailto:info@singelaktiviteter.se?subject=${subject}&body=${body}`;
+
     // Show success toast
     toast({
       title: "Tack för ditt förslag!",
       description: "Din e-postklient har öppnats för att skicka ditt förslag.",
     });
-    
+
     // Reset form
     setActivity("");
     setDescription("");
@@ -39,34 +39,34 @@ const SuggestActivity = () => {
       <div className="container mx-auto">
         <h2 className="section-title">Föreslå en aktivitet</h2>
         <p className="mb-6">Har du en idé för en aktivitet? Fyll i formuläret nedan så hör vi av oss!</p>
-        
+
         <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl">
           <div>
             <label htmlFor="activity" className="block mb-1 font-medium">Aktivitet</label>
-            <input 
-              type="text" 
-              id="activity" 
+            <input
+              type="text"
+              id="activity"
               value={activity}
               onChange={(e) => setActivity(e.target.value)}
               required
-              className="w-full border border-gray-300 px-4 py-2 rounded" 
+              className="w-full border border-gray-300 px-4 py-2 rounded"
             />
           </div>
           <div>
             <label htmlFor="age" className="block mb-1 font-medium">Ålder</label>
-            <input 
-              type="text" 
-              id="age" 
+            <input
+              type="text"
+              id="age"
               value={age}
               onChange={(e) => setAge(e.target.value)}
-              className="w-full border border-gray-300 px-4 py-2 rounded" 
+              className="w-full border border-gray-300 px-4 py-2 rounded"
             />
           </div>
           <div className="md:col-span-2">
             <label htmlFor="description" className="block mb-1 font-medium">Beskrivning</label>
-            <textarea 
-              id="description" 
-              rows={4} 
+            <textarea
+              id="description"
+              rows={4}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               required
