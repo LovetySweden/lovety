@@ -197,7 +197,7 @@ class GoogleSheetService {
       {
         id: 5,
         title: "Lunch & Boule, 35+",
-        date: "26 Juli",
+        date: "TBD Juli",
         time: "11:30-14:00",
         location: "Hotell Entré Norr",
         address: "Annumark 50, 905 95 Umeå",
@@ -209,12 +209,12 @@ class GoogleSheetService {
         externalPaymentLink: "https://lunch-boule.confetti.events/signup",
         image: "/lovable-uploads/boule35Landscape.png",
         isFull: false,
-        isOnSale: true
+        isOnSale: false
       },
       {
         id: 6,
         title: "Lunch & Boule, 50+",
-        date: "27 Juli",
+        date: "TBD Juli",
         time: "11:30-14:00",
         location: "Hotell Entré Norr",
         address: "Annumark 50, 905 95 Umeå",
@@ -226,7 +226,7 @@ class GoogleSheetService {
         externalPaymentLink: "https://brunch-boule.confetti.events/signup",
         image: "/lovable-uploads/boule50.png",
         isFull: false,
-        isOnSale: true
+        isOnSale: false
       }
       ,
       {
