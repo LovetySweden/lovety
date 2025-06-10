@@ -228,6 +228,58 @@ class GoogleSheetService {
         isFull: false,
         isOnSale: true
       }
+      ,
+      {
+        id: 7,
+        title: "Quiz night, 35+",
+        date: "Agusti/September",
+        time: "19:00-21:00",
+        location: "TBD",
+        address: "",
+        activityHeading:"Vem är tävligsinriktad och vem vill bara hänga och ha kul?",
+        description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\nUltras busslinjer 12 och 20 stannar precis utanför hotellet. Hålplatsen heter Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "375 kr",
+        earlyBirdPrice: "350 kr",
+        earlyBirdExpiryDate: "",
+        externalPaymentLink: "",
+        image: "/lovable-uploads/boule50.png",
+        isFull: false,
+        isOnSale: false
+      },
+       {
+        id: 8,
+        title: "Picknick & Prova-På Lindyhop, 35+",
+        date: "Agusti",
+        time: "17:00-20:00",
+        location: "Gamlia",
+        address: "",
+        activityHeading:"Lär dig något nytt tillsammans med andra sociala singlar",
+        description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\nUltras busslinjer 12 och 20 stannar precis utanför hotellet. Hålplatsen heter Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "375 kr",
+        earlyBirdPrice: "350 kr",
+        earlyBirdExpiryDate: "",
+        externalPaymentLink: "",
+        image: "/lovable-uploads/boule50.png",
+        isFull: false,
+        isOnSale: false
+      },
+       {
+        id: 9,
+        title: "Gruppträning, 35+",
+        date: "September",
+        time: "TBD",
+        location: "TBD",
+        address: "",
+        activityHeading:"Träna ihop med andra aktiva singlar",
+        description: "Ta en paus från jobbet, kom ut och träffa nya intressanta människor. \n\n Vi ses utanför GPs där en Lovety värd möter upp.\n\nSen promenerar vi tillsammans broarna runt. Ett bra tillfälle att lära känna varandra lite bättre.\n\nPerfekt aktivitet för singlar 35 år och uppåt som gillar att ha en aktiv livsstil.\n\nVill också äta en gemensam lunch innan promenaden går det bra. Då anmäler du dig till aktiviteten 'Lunchpromenenad, 35+ (inkl lunch)'\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\nUltras busslinjer 12 och 20 stannar precis utanför hotellet. Hålplatsen heter Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "",
+        earlyBirdPrice: "",
+        earlyBirdExpiryDate: "",
+        externalPaymentLink: "",
+        image: "/lovable-uploads/boule50.png",
+        isFull: false,
+        isOnSale: false
+      }
     ];
 
     // Add the formatted earlyBirdUntil field to each activity
