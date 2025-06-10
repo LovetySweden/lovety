@@ -227,7 +227,10 @@ class GoogleSheetService {
         image: "/lovable-uploads/boule50.png",
         isFull: false,
         isOnSale: false
-      },
+      }
+    ];
+
+    /**
       {
         id: 7,
         title: "Quiz night, 35+",
@@ -279,7 +282,7 @@ class GoogleSheetService {
         isFull: false,
         isOnSale: false
       }
-    ];
+    */
 
     // Add the formatted earlyBirdUntil field to each activity
     return activities.map(activity => ({
