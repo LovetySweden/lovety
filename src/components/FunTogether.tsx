@@ -1,7 +1,7 @@
 
 const FunTogether = () => {
   return (
-    <div className="bg-lovely-beige py-12 px-4 md:px-8">
+    <div className="bg-white py-12 px-4 md:px-8">
       <div className="container mx-auto">
         <h2 className="section-title">Ha roligt tillsammans</h2>
         <div className="max-w-4xl">
