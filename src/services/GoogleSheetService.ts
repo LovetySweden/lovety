@@ -206,7 +206,7 @@ class GoogleSheetService {
         price: "350 kr",
         earlyBirdPrice: "325 kr",
         earlyBirdExpiryDate: "2025-07-12",
-        externalPaymentLink: "https://example.com/payment/activity-2",
+        externalPaymentLink: "https://lunch-boule.confetti.events/signup",
         image: "/lovable-uploads/boule35Landscape.png",
         isFull: false,
         isOnSale: true
