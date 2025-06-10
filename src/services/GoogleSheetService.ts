@@ -189,7 +189,7 @@ class GoogleSheetService {
         price: "275 kr",
         earlyBirdPrice: "250 kr",
         earlyBirdExpiryDate: "2025-06-18",
-        externalPaymentLink: "https://example.com/payment/activity-5",
+        externalPaymentLink: "https://kvallspromenad-med-fika-50.confetti.events/signup",
         image: "/lovable-uploads/EveningWalk50.png",
         isFull: false,
         isOnSale: true
