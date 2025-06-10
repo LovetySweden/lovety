@@ -18,7 +18,7 @@ const InterestRegistration = ({ activityTitle, onClose }: InterestRegistrationPr
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!name || !email) {
       toast({
         title: "Fel",
@@ -31,13 +31,13 @@ const InterestRegistration = ({ activityTitle, onClose }: InterestRegistrationPr
     setIsSubmitting(true);
 
     try {
-      // Send email to info@singelaktiviteter.se
-      const emailBody = `Ny intresseanmälan för: ${activityTitle}\n\nNamn: ${name}\nE-post: ${email}`;
-      
-      // In a real implementation, you would send this to a backend service
-      // For now, we'll simulate the request
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const subject = encodeURIComponent("Intresseanmälan för aktivitet");
+      const body = encodeURIComponent(`
+Ny intresseanmälan för: ${activityTitle}
+Namn: ${name}
+Email: ${email}
+    `);
+      window.location.href = `mailto:info@singelaktiviteter.se?subject=${subject}&body=${body}`;
       setIsSuccess(true);
     } catch (error) {
       console.error("Error sending interest registration:", error);
@@ -56,7 +56,7 @@ const InterestRegistration = ({ activityTitle, onClose }: InterestRegistrationPr
       <div className="max-w-md border rounded-lg p-6 bg-white">
         <h3 className="text-lg font-medium mb-4">Tack!</h3>
         <p className="mb-4">Tack för att du visat intresse, vi hör av oss när biljettförsäljningen öppnar för denna aktivitet.</p>
-        <Button 
+        <Button
           onClick={onClose}
           className="bg-lovely-red text-white"
         >
@@ -72,34 +72,34 @@ const InterestRegistration = ({ activityTitle, onClose }: InterestRegistrationPr
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label htmlFor="name" className="block mb-1 text-sm font-medium">Namn</label>
-          <Input 
-            id="name" 
-            value={name} 
-            onChange={(e) => setName(e.target.value)} 
-            required 
+          <Input
+            id="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
         <div>
           <label htmlFor="email" className="block mb-1 text-sm font-medium">E-post</label>
-          <Input 
-            id="email" 
-            type="email" 
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            required 
+          <Input
+            id="email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="flex gap-2">
-          <Button 
-            type="submit" 
+          <Button
+            type="submit"
             className="bg-lovely-red text-white"
             disabled={isSubmitting}
           >
             {isSubmitting ? "Skickar..." : "Skicka"}
           </Button>
-          <Button 
+          <Button
             type="button"
-            variant="outline" 
+            variant="outline"
             onClick={onClose}
             disabled={isSubmitting}
           >
