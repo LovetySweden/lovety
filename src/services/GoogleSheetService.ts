@@ -126,42 +126,6 @@ class GoogleSheetService {
     const activities = [
       {
         id: 1,
-        title: "Fotbollsgolf, 35+",
-        date: "23 juni",
-        time: "18:30-20:30",
-        location: "Hotell Entré Norr",
-        address: "Annumark 50, 905 95 Umeå",
-        activityHeading:"Lär känna varandra under en kul aktivitet i naturskön lantlig miljö",
-        description: 
-          "Fartfylld aktivitet för aktiva singlar 35 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
-        price: "250 kr",
-        earlyBirdPrice: "225 kr",
-        earlyBirdExpiryDate: "2025-06-16",
-        externalPaymentLink: "https://fotbollsgolf35.confetti.events/signup",
-        image: "/lovable-uploads/Fotboll35.png",
-        isFull: false,
-        isOnSale: true
-      },
-      {
-        id: 2,
-        title: "Fotbollsgolf, 50+",
-        date: "24 juni",
-        time: "18:30-20:30",
-        location: "Hotell Entré Norr",
-        address: "Annumark 50, 905 95 Umeå",
-        activityHeading:"Lär känna varandra under en kul aktivitet i naturskön lantlig miljö",
-        description: 
-          "Fartfylld aktivitet för aktiva singlar 50 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
-        price: "250 kr",
-        earlyBirdPrice: "225 kr",
-        earlyBirdExpiryDate: "2025-06-16",
-        externalPaymentLink: "https://fotbollsgolf-50.confetti.events/signup",
-        image: "/lovable-uploads/fotboll50.png",
-        isFull: false,
-        isOnSale: true
-      },
-      {
-        id: 3,
         title: "Kvällspromenad & Fika, 35+",
         date: "2 Juli",
         time: "19:00-21:00",
@@ -178,7 +142,7 @@ class GoogleSheetService {
         isOnSale: true
       },
       {
-        id: 4,
+        id: 2,
         title: "Kvällspromenad & Fika, 50+",
         date: "3 Juli",
         time: "19:00-21:00",
@@ -195,7 +159,7 @@ class GoogleSheetService {
         isOnSale: true
       },
       {
-        id: 5,
+        id: 3,
         title: "Lunch & Boule, 35+",
         date: "TBD Juli",
         time: "11:30-14:00",
@@ -212,7 +176,7 @@ class GoogleSheetService {
         isOnSale: false
       },
       {
-        id: 6,
+        id: 4,
         title: "Lunch & Boule, 50+",
         date: "TBD Juli",
         time: "11:30-14:00",
@@ -281,7 +245,43 @@ class GoogleSheetService {
         image: "/lovable-uploads/boule50.png",
         isFull: false,
         isOnSale: false
-      }
+      },
+      {
+        id: 1,
+        title: "Fotbollsgolf, 35+",
+        date: "23 juni",
+        time: "18:30-20:30",
+        location: "Hotell Entré Norr",
+        address: "Annumark 50, 905 95 Umeå",
+        activityHeading:"Lär känna varandra under en kul aktivitet i naturskön lantlig miljö",
+        description: 
+          "Fartfylld aktivitet för aktiva singlar 35 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "250 kr",
+        earlyBirdPrice: "225 kr",
+        earlyBirdExpiryDate: "2025-06-16",
+        externalPaymentLink: "https://fotbollsgolf35.confetti.events/signup",
+        image: "/lovable-uploads/Fotboll35.png",
+        isFull: false,
+        isOnSale: true
+      },
+      {
+        id: 2,
+        title: "Fotbollsgolf, 50+",
+        date: "24 juni",
+        time: "18:30-20:30",
+        location: "Hotell Entré Norr",
+        address: "Annumark 50, 905 95 Umeå",
+        activityHeading:"Lär känna varandra under en kul aktivitet i naturskön lantlig miljö",
+        description: 
+          "Fartfylld aktivitet för aktiva singlar 50 år och uppåt som gillar att vara ute i naturen. \n\n Vi samlas i receptionen på Hotell Entré Norr, där en aktivitetsvärd från Lovety möter upp.\n\nSen går vi ut till den 10.000 kvadratmeter stora banan och spelar 18 hål tillsammans samtidigt som vi vid de olika hålen får möjlighet att lära känna varandra bättre genom att besvara olika lära-känna-varandra frågor.\n\nKom och var med på en roligt stund i en somrig miljö.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "250 kr",
+        earlyBirdPrice: "225 kr",
+        earlyBirdExpiryDate: "2025-06-16",
+        externalPaymentLink: "https://fotbollsgolf-50.confetti.events/signup",
+        image: "/lovable-uploads/fotboll50.png",
+        isFull: false,
+        isOnSale: true
+      },
     */
 
     // Add the formatted earlyBirdUntil field to each activity
