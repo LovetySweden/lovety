@@ -126,6 +126,43 @@ class GoogleSheetService {
     const activities = [
       {
         id: 1,
+        title: "Lunch & Boule, 35+",
+        date: "TBD Juli",
+        time: "11:30-14:00",
+        location: "Hotell Entré Norr",
+        address: "Annumark 50, 905 95 Umeå",
+        activityHeading:"Soppa och nybakt bröd följt av boule i vacker miljö",
+        description: "Vi ses i receptionen på Hotell Entré Norr där en Lovety värd möter upp.\n\nEfter  en god sopp-lunch med härligt nybakat bröd går vi ut och spelar boule tillsammans.\n\n En rolig aktivitet och ett bra sätt att lära känna varandra lite bättre.\n\nPerfekt aktivitet för dig som gillar lugnare aktiviteter.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "350 kr",
+        earlyBirdPrice: "325 kr",
+        earlyBirdExpiryDate: "2025-07-12",
+        externalPaymentLink: "https://lunch-boule.confetti.events/signup",
+        image: "/lovable-uploads/boule35Landscape.png",
+        isFull: false,
+        isOnSale: false
+      },
+      {
+        id: 2,
+        title: "Lunch & Boule, 50+",
+        date: "TBD Juli",
+        time: "11:30-14:00",
+        location: "Hotell Entré Norr",
+        address: "Annumark 50, 905 95 Umeå",
+        activityHeading:"Soppa och nybakt bröd följt av boule i vacker miljö",
+        description: "Vi ses i receptionen på Hotell Entré Norr där en Lovety värd möter upp.\n\nEfter  en god sopp-lunch med härligt nybakat bröd går vi ut och spelar boule tillsammans.\n\n En rolig aktivitet och ett bra sätt att lära känna varandra lite bättre.\n\nPerfekt aktivitet för dig som gillar lugnare aktiviteter.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "350 kr",
+        earlyBirdPrice: "325 kr",
+        earlyBirdExpiryDate: "2025-07-12",
+        externalPaymentLink: "https://brunch-boule.confetti.events/signup",
+        image: "/lovable-uploads/boule50.png",
+        isFull: false,
+        isOnSale: false
+      }
+    ];
+
+    /**
+      {
+        id: 1,
         title: "Kvällspromenad & Fika, 35+",
         date: "2 Juli",
         time: "19:00-21:00",
@@ -158,43 +195,6 @@ class GoogleSheetService {
         isFull: true,
         isOnSale: false
       },
-      {
-        id: 3,
-        title: "Lunch & Boule, 35+",
-        date: "TBD Juli",
-        time: "11:30-14:00",
-        location: "Hotell Entré Norr",
-        address: "Annumark 50, 905 95 Umeå",
-        activityHeading:"Soppa och nybakt bröd följt av boule i vacker miljö",
-        description: "Vi ses i receptionen på Hotell Entré Norr där en Lovety värd möter upp.\n\nEfter  en god sopp-lunch med härligt nybakat bröd går vi ut och spelar boule tillsammans.\n\n En rolig aktivitet och ett bra sätt att lära känna varandra lite bättre.\n\nPerfekt aktivitet för dig som gillar lugnare aktiviteter.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
-        price: "350 kr",
-        earlyBirdPrice: "325 kr",
-        earlyBirdExpiryDate: "2025-07-12",
-        externalPaymentLink: "https://lunch-boule.confetti.events/signup",
-        image: "/lovable-uploads/boule35Landscape.png",
-        isFull: false,
-        isOnSale: false
-      },
-      {
-        id: 4,
-        title: "Lunch & Boule, 50+",
-        date: "TBD Juli",
-        time: "11:30-14:00",
-        location: "Hotell Entré Norr",
-        address: "Annumark 50, 905 95 Umeå",
-        activityHeading:"Soppa och nybakt bröd följt av boule i vacker miljö",
-        description: "Vi ses i receptionen på Hotell Entré Norr där en Lovety värd möter upp.\n\nEfter  en god sopp-lunch med härligt nybakat bröd går vi ut och spelar boule tillsammans.\n\n En rolig aktivitet och ett bra sätt att lära känna varandra lite bättre.\n\nPerfekt aktivitet för dig som gillar lugnare aktiviteter.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
-        price: "350 kr",
-        earlyBirdPrice: "325 kr",
-        earlyBirdExpiryDate: "2025-07-12",
-        externalPaymentLink: "https://brunch-boule.confetti.events/signup",
-        image: "/lovable-uploads/boule50.png",
-        isFull: false,
-        isOnSale: false
-      }
-    ];
-
-    /**
       {
         id: 7,
         title: "Quiz night, 35+",
