@@ -138,8 +138,8 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-18",
         externalPaymentLink: "https://kvallspromenad-med-fika.confetti.events/signup",
         image: "/lovable-uploads/walk35.png",
-        isFull: false,
-        isOnSale: true
+        isFull: true,
+        isOnSale: false
       },
       {
         id: 2,
@@ -155,8 +155,8 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "2025-06-18",
         externalPaymentLink: "https://kvallspromenad-med-fika-50.confetti.events/signup",
         image: "/lovable-uploads/EveningWalk50.png",
-        isFull: false,
-        isOnSale: true
+        isFull: true,
+        isOnSale: false
       },
       {
         id: 3,
