@@ -3,7 +3,7 @@ const FunTogether = () => {
   return (
     <div className="bg-white py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <h2 className="section-title">Ett Sätt Att Träffas Och Ha Roligt Tillsammans</h2>
+        <h2 className="section-title">Ett sätt att <i>träffas</i> och ha roligt tillsammans</h2>
         <div className="max-w-4xl">
           <p className="text-lg mb-4">
             Trött på ytliga dating appar? Krystade dejter?
