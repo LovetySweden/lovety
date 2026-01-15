@@ -144,18 +144,35 @@ class GoogleSheetService {
       {
         id: 2,
         title: "Date & Create, 35+",
-        date: "TBD Mars",
+        date: "TBD February/Mars",
         time: "TBD",
         location: "Stadsbiblioteket",
         address: "",
-        activityHeading:"Umgås och måla en personlig kopp",
-        description: "Vi ses i receptionen på Hotell Entré Norr där en Lovety värd möter upp.\n\nEfter  en god sopp-lunch med härligt nybakat bröd går vi ut och spelar boule tillsammans.\n\n En rolig aktivitet och ett bra sätt att lära känna varandra lite bättre.\n\nPerfekt aktivitet för dig som gillar lugnare aktiviteter.\n\nKläder efter väder, vi kör vid både sol och regn :)\n\nTill Hotell Entré Norr hittar du genom att köra E4an mot sävar från stan. Hotellet ligger till höger precis vid Anumark.\n\nAnumark 50\nE4, Norra infart\n905 95 Umeå\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
-        price: "350 kr",
-        earlyBirdPrice: "325 kr",
-        earlyBirdExpiryDate: "2025-07-12",
-        externalPaymentLink: "https://brunch-boule.confetti.events/signup",
+        activityHeading:"Umgås och låt kreativiteten flöda",
+        description: "Kom och träffa trevliga personer samtidigt som du låter fantasin flöda genom att måla din egen kopp.\n\nAtt Skapa något tillsammans bjuder in till naturliga samtal och mycket skoj.\n\n En rolig aktivitet och ett bra sätt att lära känna varandra lite bättre.\n\n Inga konstnärliga förkunskaper krävs. Här är vi bjussiga och fokus ligger på trevligt umgänge.\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "TBD",
+        earlyBirdPrice: "TBD",
+        earlyBirdExpiryDate: "TBD",
+        externalPaymentLink: "",
         image: "/lovable-uploads/boule50.png",
         isFull: false,
+        isOnSale: false
+      },
+      {
+        id: 3,
+        title: "Lindy Hop Prova På, 35+",
+        date: "TBD Mars",
+        time: "18:30-20:00",
+        location: "Ordenshuset",
+        address: "",
+        activityHeading:"Lär dig grunderna i Lindy Hop",
+        description: "Dans kan vara det ultimata sättet att träffa nya människor!\n\nPå den här aktiviteten får du lära dig grunderna i swing dansen Lindy Hop samtidigt som du lär känna övriga deltagare genom organiserade korta diskussionsfrågor. \n\n Vi samlas en trappa upp på Ordenshuset, där en aktivitetsvärd från Lovety möter upp.\n\nSen kör vi en introduktion till Lindy Hop och för den som vill finns det möjlighet att stanna kvar och fortsätta dansa på Swingums danskväll som börjar kl 20:00. Separat inträde löses då.\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "175 kr",
+        earlyBirdPrice: "150 kr",
+        earlyBirdExpiryDate: "",
+        externalPaymentLink: "",
+        image: "/lovable-uploads/walk35.png",
+        isFull: true,
         isOnSale: false
       }
     ];
@@ -177,7 +194,8 @@ class GoogleSheetService {
         image: "/lovable-uploads/walk35.png",
         isFull: true,
         isOnSale: false
-      },
+      }
+      /**,
       {
         id: 2,
         title: "Kvällspromenad & Fika, 50+",
