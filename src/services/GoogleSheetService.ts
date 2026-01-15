@@ -143,6 +143,23 @@ class GoogleSheetService {
       },
       {
         id: 2,
+        title: "Lunch & Mingle, 50+",
+        date: "Date: TBD",
+        time: "11:45-13:00",
+        location: "Orangeriet",
+        address: "Kungsgatan 71, 903 26 Umeå",
+        activityHeading:"Lunch & Mingel - Tema: Resa",
+        description: "Avsluta veckan med att lära känna nya intressanta personer på ett härligt lunch mingel. \n\n Vi ses i entreen till Orangeriet där en Lovety värd möter upp.\n\njUnder lunchen får du tillfälle att både umgåd i grupp och individuella samtal. Vi organiserar samtalen och det kommer finnas frågor att diskutera runt.\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        price: "300 kr",
+        earlyBirdPrice: "275 kr",
+        earlyBirdExpiryDate: "2026-01-31",
+        externalPaymentLink: "",
+        image: "",
+        isFull: false,
+        isOnSale: false
+      },
+      {
+        id: 3,
         title: "Date & Create, 35+",
         date: "Datum: TBD February/Mars",
         time: "Tid: TBD",
@@ -159,7 +176,7 @@ class GoogleSheetService {
         isOnSale: false
       },
       {
-        id: 3,
+        id: 4,
         title: "Lindy Hop Prova På, 35+",
         date: "Datum: TBD Mars",
         time: "18:30-20:00",
@@ -172,7 +189,7 @@ class GoogleSheetService {
         earlyBirdExpiryDate: "",
         externalPaymentLink: "",
         image: "/lovable-uploads/walk35.png",
-        isFull: true,
+        isFull: false,
         isOnSale: false
       }
     ];
