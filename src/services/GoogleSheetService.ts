@@ -144,8 +144,8 @@ class GoogleSheetService {
       {
         id: 2,
         title: "Date & Create, 35+",
-        date: "TBD February/Mars",
-        time: "TBD",
+        date: "Datum: TBD February/Mars",
+        time: "Tid: TBD",
         location: "Stadsbiblioteket",
         address: "",
         activityHeading:"Umgås och låt kreativiteten flöda",
@@ -161,7 +161,7 @@ class GoogleSheetService {
       {
         id: 3,
         title: "Lindy Hop Prova På, 35+",
-        date: "TBD Mars",
+        date: "Datum: TBD Mars",
         time: "18:30-20:00",
         location: "Ordenshuset",
         address: "",
