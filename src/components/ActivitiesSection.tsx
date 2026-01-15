@@ -46,10 +46,7 @@ const ActivitiesSection = () => {
   return (
     <div className="py-12 px-4 md:px-8">
       <div className="container mx-auto">
-        <h2 className="section-title">Aktiviteter</h2>
-        <p className="mb-6">
-          Delta i någon av våra populära aktiviteter och träffa andra singlar med liknande intressen.
-        </p>
+        <h2 className="section-title">Kommande Aktiviteter</h2>
 
         {isLoading ? (
           <div className="flex justify-center py-12">
