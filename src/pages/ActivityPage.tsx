@@ -113,13 +113,6 @@ const ActivityPage = () => {
       <div className="flex-1 pt-24 pb-12 px-4 md:px-8 bg-lovely-beige/30">
         <div className="container mx-auto">
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="relative h-80 md:h-[500px]">
-              <img 
-                src={activity.image} 
-                alt={activity.title} 
-                className="w-full h-full object-cover"
-              />
-            </div>
             
             <div className="p-6 md:p-8">
               <h1 className="text-3xl md:text-4xl font-serif font-bold mb-4" style={{ color: '#C0392B' }}>{activity.title}</h1>
