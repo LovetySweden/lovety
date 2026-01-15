@@ -48,9 +48,6 @@ const ActivityCard = ({
 
   return (
     <div className="activity-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow p-3 flex flex-col h-full">
-      <div className="relative mb-2">
-        <img src={image} alt={title} className="activity-card-image w-full h-48 object-cover rounded" />
-      </div>
       <div className="flex-1 flex flex-col">
         <h3 className="font-serif font-medium text-lg mb-1">{title}</h3>
         <Badge className={`${getSaleStatusColor()} mb-2 w-fit text-xs`} variant="outline">
