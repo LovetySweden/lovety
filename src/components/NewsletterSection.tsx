@@ -69,7 +69,7 @@ Email: ${email}
   };
 
   return (
-    <div id="newsletter" className="bg-lovely-beige py-12 px-4 md:px-8 scroll-mt-24">
+    <div id="newsletter" className="bg-white py-12 px-4 md:px-8 scroll-mt-24">
       <div className="container mx-auto">
         <h2 className="section-title">Prenumerera på vårt nyhetsbrev</h2>
         <p className="mb-6">Få nya aktiviteter direkt i din inkorg</p>
