@@ -126,17 +126,18 @@ class GoogleSheetService {
     const activities = [
       {
         id: 1,
-        title: "Lunch & Mingle, 35+",
+        title: "Fredagslunchen, 35+",
         date: "6e februari",
         time: "11:45-13:00",
         location: "Orangeriet",
         address: "Kungsgatan 71, 903 26 Umeå",
-        activityHeading:"Lunch & Mingel - Tema: Resa",
-        description: "Avsluta veckan med att lära känna nya intressanta personer på ett härligt lunch mingel. \n\n Vi ses i entreen till Orangeriet där en Lovety värd möter upp.\n\njUnder lunchen får du tillfälle att både umgåd i grupp och individuella samtal. Vi organiserar samtalen och det kommer finnas frågor att diskutera runt.\n\nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.",
+        activityHeading:"Tema: Resa",
+        description: "Tjuvstarta helgen med att lära känna nya intressanta personer på denna roliga lunch med faciliterat singel-mingel!/n/nBeskrivning/nVåra mingel luncher är för dig som vill lära känna människor i en avslappnad gruppmiljö utan krav på att “klicka” med en specifik person. /nVarje lunch är centrerad runt ett eget tema, vilket ger deltagarna ett naturligt sätt att lära känna varandra och öppnar upp för intressanta samtal. /n/nOavsett om du aktivt letar efter en partner, nya vänner eller meningsfulla möten kan detta bli höjdpunkten på din vecka./n/nLunch är inkluderad i biljettpriset./n/nSå här går det till/nVi ses i entren till Orangeriet där en Lovety värd möter upp. Värden guidar sedan dig och övriga deltagare igenom lunchen och tillhandahåller samtalsprompter och ser till att alla har någon att prata med och att allt flyter på på ett trevlig sätt./n/nUnder lunchen får du tillfälle att både umgås i grupp och individuella samtal. /n/nÄr det färre än 6 deltagare ställer vi in och då betalas hela biljettpriset tillbaka.
+",
         price: "300 kr (inkl. lunch)",
         earlyBirdPrice: "275 kr",
         earlyBirdExpiryDate: "2026-01-31",
-        externalPaymentLink: "",
+        externalPaymentLink: "https://fredagslunchen-35.confetti.events/signup",
         image: "/lovable-uploads/boule35Landscape.png",
         isFull: false,
         isOnSale: false
