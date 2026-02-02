@@ -127,7 +127,7 @@ class GoogleSheetService {
       {
         id: 1,
         title: "Fredagslunchen, 35+",
-        date: "6e februari",
+        date: "mars",
         time: "11:45-13:15",
         location: "Orangeriet",
         address: "Kungsgatan 71, 903 26 Umeå",
@@ -139,7 +139,7 @@ class GoogleSheetService {
         externalPaymentLink: "https://fredagslunchen-35.confetti.events/signup",
         image: "/lovable-uploads/boule35Landscape.png",
         isFull: false,
-        isOnSale: true
+        isOnSale: false
       },
       {
         id: 2,
