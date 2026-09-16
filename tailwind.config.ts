@@ -100,7 +100,7 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out'
 			},
 			fontFamily: {
-				'serif': ['The Season', 'Georgia', 'Cambria', 'serif'],
+				'serif': ['The Season', 'Playfair Display', 'Georgia', 'serif'],
 				'sans': ['Lato', 'ui-sans-serif', 'system-ui', 'sans-serif'],
 			}
 		}
