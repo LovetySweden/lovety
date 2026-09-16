@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/lovety-logo.png.asset.json";
+import logo from "@/assets/lovety-logo.png";
 
 const BrandHeader = () => (
   <header className="w-full pt-10 pb-8 text-center">
