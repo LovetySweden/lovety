@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/lovety-logo.png";
+import logo from "@/assets/lovety-logo-5.png.asset.json";
 
 const BrandHeader = () => (
-  <header className="w-full pt-10 pb-8 text-center">
-    <Link to="/" className="inline-block">
-      <img src={logo} alt="Lovety" className="h-24 md:h-28 mx-auto" />
+  <header className="w-full pb-6 pt-7 text-center md:pb-7 md:pt-8">
+    <Link to="/" className="inline-block" aria-label="Lovety – startsidan">
+      <img
+        src={logo.url}
+        alt="Lovety – Träffas först. Matcha sen."
+        className="mx-auto h-auto w-40 md:w-44"
+      />
     </Link>
-    <p className="mt-1 font-serif text-2xl md:text-3xl text-primary">
-      Träffas först. Matcha sen.
-    </p>
   </header>
 );
 

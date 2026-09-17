@@ -1,5 +1,6 @@
 import BrandHeader from "@/components/BrandHeader";
 import CtaBlock from "@/components/CtaBlock";
+import { ArrowDown } from "lucide-react";
 
 const steps = [
   { top: "4 MIN", bottom: "Träffas" },
@@ -40,11 +41,10 @@ const Index = () => {
       <BrandHeader />
 
       <div className="container mx-auto max-w-3xl px-6 pb-20">
-        <section className="pt-8">
-          <h1 className="font-sans text-2xl md:text-3xl leading-snug text-primary">
-            Trött på att swipa?
-            <br />
-            Träffa 10 singlar på en kväll – hemifrån.
+        <section className="pt-7 md:pt-10">
+          <h1 className="max-w-3xl font-sans text-4xl font-bold leading-tight text-primary md:text-5xl">
+            <span className="block">Trött på att swipa?</span>
+            <span className="mt-2 block">Träffa 10 singlar på en kväll – hemifrån.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-sm md:text-base">
             <strong>Inga profiler. Inga swipes.</strong> Korta videosamtal med andra
@@ -55,15 +55,18 @@ const Index = () => {
 
         <section className="pt-20">
           <h2 className="font-serif text-3xl text-primary">Så funkar det</h2>
-          <div className="mt-6 flex flex-wrap items-center gap-3">
+          <div className="mt-8 flex w-fit flex-col items-center">
             {steps.map((s, i) => (
-              <div key={s.top} className="flex items-center gap-3">
-                <div className="rounded-xl bg-primary px-4 py-3 text-primary-foreground">
+              <div key={s.top} className="flex flex-col items-center">
+                <div className="w-48 rounded-lg bg-primary px-4 py-3 text-center text-primary-foreground">
                   <div className="text-sm opacity-80">{s.top}</div>
                   <div>{s.bottom}</div>
                 </div>
                 {i < steps.length - 1 && (
-                  <span className="text-primary">→ Båda vill →</span>
+                  <div className="flex flex-col items-center py-2 text-primary">
+                    <span className="text-sm">Båda vill</span>
+                    <ArrowDown className="h-6 w-6" aria-hidden="true" />
+                  </div>
                 )}
               </div>
             ))}
