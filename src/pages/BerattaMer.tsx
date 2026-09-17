@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import BrandHeader from "@/components/BrandHeader";
 import { Button } from "@/components/ui/button";
@@ -124,9 +124,16 @@ const BerattaMer = () => {
             )}
           </div>
 
-          <Button type="submit" className="h-12 rounded-full px-10 text-lg">
-            Spara mina svar
-          </Button>
+          <div>
+            <Button type="submit" className="h-12 rounded-full px-10 text-lg">
+              Spara mina svar
+            </Button>
+            <div className="mt-5">
+              <Link to="/tack" className="text-primary/80 underline">
+                Gör det senare
+              </Link>
+            </div>
+          </div>
         </form>
       </div>
     </main>
