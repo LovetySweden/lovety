@@ -17,7 +17,7 @@ const DuArMed = () => (
         Fortsätt - ca 30 sek
       </Link>
       <div className="mt-5">
-        <Link to="/" className="text-primary/80 underline">
+        <Link to="/tack" className="text-primary/80 underline">
           Gör det senare
         </Link>
       </div>
